@@ -4,75 +4,132 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>e‑medycyna — studio / usługi medyczne</title>
-  <meta name="description" content="Nowoczesne studio/usługi. Skontaktuj się z nami — szybka wycena, dostępne terminy." />
+  <meta name="description" content="Nowoczesne studio i oferta usług. Rezerwacje, cennik, specyfikacja, kontakt." />
 
   <style>
     :root{
-      /* KOLORY — zgodnie z prośbą */
+      /* KOLORY */
       --brand:#8075ed;            /* główny akcent */
-      --text:#ffffff;             /* kolor tekstu na hero */
+      --text:#ffffff;             /* tekst na ciemnym */
       --muted:rgba(255,255,255,.85);
-      --bg:#0b0f14;               /* tło poza hero */
-      --overlay:rgba(0,0,0,.45);  /* przyciemnienie video/obrazu */
+      --bg:#0b0f14;               /* tło */
+      --surface:#0e1522;          /* karty */
+      --border:rgba(255,255,255,.12);
+      --overlay:rgba(0,0,0,.45);  /* przyciemnienie hero */
       --outline:#ffffff;          /* obrys tytułu */
-      --wa:#25D366;               /* standard WhatsApp */
+      --wa:#25D366;               /* WhatsApp */
+      --maxw:1200px;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%;}
+    html,body{height:100%}
     body{
-      margin:0;
+      margin:0; background:var(--bg); color:var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      background:var(--bg);
-      color:var(--text);
       line-height:1.5;
     }
 
-    /* ===== NAVBAR ===== */
-    .nav{
-      position:fixed; inset:24px 24px auto 24px; z-index:30;
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ===== STICKY NAV ===== */
+    header.site{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background:color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom:1px solid var(--border);
     }
+    .nav{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px}
     .logo{display:flex; align-items:center; gap:12px}
     .logo img{height:44px; width:auto; display:block}
     .logo span{font-weight:800; letter-spacing:.06em}
-    .icons{display:flex; align-items:center; gap:14px}
-    .icon-link{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:999px; background:rgba(0,0,0,.35); color:#fff; border:1px solid rgba(255,255,255,.25)}
-    .icon-link:hover{background:rgba(128,117,237,.35); border-color:rgba(128,117,237,.65)}
+    .nav a{color:var(--text)}
+    .menu{display:flex; gap:16px; align-items:center}
+    .menu a{opacity:.9}
+    .menu a:hover{opacity:1}
+    .burger{display:none; cursor:pointer; font-size:26px}
+    @media(max-width:860px){
+      .menu{display:none}
+      .burger{display:block}
+    }
+
+    /* ===== MOBILE DRAWER ===== */
+    .drawer{position:fixed; inset:auto 0 0 0; background:var(--surface); border-top:1px solid var(--border); transform:translateY(100%); transition:transform .25s ease; z-index:60}
+    .drawer.open{transform:translateY(0)}
+    .drawer nav{display:grid; gap:14px; padding:18px 20px}
+    .drawer a{color:var(--text)}
 
     /* ===== HERO ===== */
-    .hero{position:relative; min-height:100vh; width:100vw; overflow:hidden}
-    .hero video, .hero .bg-img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.1) contrast(1.05) brightness(.9);
-    }
+    .hero{position:relative; min-height:88vh; width:100%; overflow:hidden}
+    .hero video, .hero .bg-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.06) contrast(1.05) brightness(.9)}
     .hero .bg-img{background-size:cover; background-position:center}
-    .hero::after{content:""; position:absolute; inset:0; background:var(--overlay);}
-    .hero-content{
-      position:relative; z-index:10; height:100%; display:grid; place-items:center; padding:120px 24px 80px; text-align:center;
-    }
-    .title{
-      font-size: clamp(40px, 8vw, 120px);
-      line-height:1; margin:0 0 14px; font-weight:900;
-      color:transparent; -webkit-text-stroke: 2px var(--outline); text-transform:uppercase; letter-spacing:.06em;
-    }
+    .hero::after{content:""; position:absolute; inset:0; background:var(--overlay)}
+    .hero-inner{position:relative; z-index:10; min-height:88vh; display:grid; place-items:center; padding:120px 24px 80px; text-align:center}
+    .title{font-size: clamp(44px, 8.6vw, 132px); line-height:.95; margin:0 0 14px; font-weight:900; color:transparent; -webkit-text-stroke: 2px var(--outline); text-transform:uppercase; letter-spacing:.06em}
     .subtitle{margin:0 0 24px; font-size:clamp(14px,2.2vw,22px); color:var(--muted); letter-spacing:.35em}
-
     .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-    .btn{appearance:none; border:none; cursor:pointer; text-decoration:none; font-weight:800; letter-spacing:.04em;
-      padding:14px 22px; border-radius:999px; transition:transform .06s ease, filter .2s ease;}
-    .btn-primary{background:var(--brand); color:#fff;}
+    .btn{appearance:none; border:none; cursor:pointer; text-decoration:none; font-weight:800; letter-spacing:.04em; padding:14px 22px; border-radius:999px; transition:transform .06s ease, filter .2s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--brand); color:#fff}
     .btn-primary:hover{filter:brightness(1.05)}
     .btn-ghost{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5)}
     .btn-ghost:hover{background:rgba(255,255,255,.08)}
 
-    /* ===== WHATSAPP FLOAT ===== */
-    .wa{position:fixed; right:18px; bottom:18px; z-index:40;}
-    .wa a{display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; background:var(--wa); color:#fff; box-shadow: 0 10px 24px rgba(0,0,0,.35)}
+    /* ===== LAYOUT ===== */
+    main{max-width:var(--maxw); margin:0 auto; padding:48px 22px}
+    .section{margin:32px 0}
+    .h2{font-size:clamp(22px,3.2vw,34px); margin:0 0 12px}
+    .lead{color:#dbe7ff}
 
-    /* ===== SEKCJA POD HERO (opcjonalna) ===== */
-    main{max-width:1100px; margin:0 auto; padding:48px 22px;}
-    .card{background:#0e1522; border:1px solid rgba(255,255,255,.08); color:#dbe7ff; border-radius:18px; padding:22px}
-    .card h2{margin:0 0 10px}
-    a.inline{color:var(--brand)}
+    /* ===== CARDS / GRID ===== */
+    .grid{display:grid; gap:18px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:980px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+    .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px; color:#e7f0ff; box-shadow:var(--shadow)}
+    .kicker{display:inline-block; padding:4px 10px; border-radius:999px; background:color-mix(in oklab, var(--brand) 18%, #ffffff12); color:#fff; font-weight:700; font-size:12px; border:1px solid color-mix(in oklab, var(--brand) 60%, transparent)}
+
+    /* ===== FEATURES ===== */
+    .feature h3{margin:6px 0}
+    .feature p{margin:6px 0 0; color:#c7d7ff}
+
+    /* ===== GALLERY ===== */
+    .gallery{display:grid; grid-template-columns:repeat(12,1fr); gap:10px}
+    .gallery img{width:100%; height:100%; object-fit:cover; border-radius:14px; border:1px solid var(--border)}
+    .span-6{grid-column:span 6}
+    .span-3{grid-column:span 3}
+    .span-12{grid-column:span 12}
+    @media(max-width:860px){.span-6,.span-3,.span-12{grid-column:span 12}}
+
+    /* ===== PRICING ===== */
+    .price{font-size:28px; font-weight:900; margin:10px 0}
+    .muted{color:#9fb0d1}
+    ul.clean{list-style:none; padding:0; margin:0}
+    ul.clean li{display:flex; gap:10px; align-items:flex-start; margin:8px 0}
+
+    /* ===== SPECS ===== */
+    .specs{width:100%; border-collapse:collapse}
+    .specs th,.specs td{border:1px solid var(--border); padding:10px; text-align:left}
+    .specs th{background:color-mix(in oklab, var(--brand) 18%, #000)}
+
+    /* ===== FAQ (accordion) ===== */
+    details{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:14px}
+    details+details{margin-top:10px}
+    details[open]{border-color:color-mix(in oklab, var(--brand) 55%, transparent)}
+
+    /* ===== CONTACT ===== */
+    .contact-grid{display:grid; gap:18px; grid-template-columns:2fr 3fr}
+    @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+    .field{display:grid; gap:6px}
+    input,textarea{background:#0c1220; border:1px solid var(--border); color:#e7f0ff; padding:12px 14px; border-radius:12px}
+    textarea{min-height:140px}
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .wa{position:fixed; right:18px; bottom:18px; z-index:60}
+    .wa a{display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; background:var(--wa); color:#fff; box-shadow:var(--shadow)}
 
     /* dostępność */
     .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
@@ -82,32 +139,45 @@
 <body>
   <a class="sr-only" href="#main">Przejdź do treści</a>
 
-  <!-- NAVBAR z logotypem po lewej i ikonami po prawej -->
-  <div class="nav" role="navigation" aria-label="Główna">
-    <div class="logo">
-      <!-- PODMIEN na własny plik: emedycyna.png -->
-      <img src="emedycyna.png" alt="e‑medycyna" />
-      <span>e‑medycyna</span>
+  <!-- ===== STICKY NAVBAR ===== -->
+  <header class="site">
+    <div class="nav" role="navigation" aria-label="Główna">
+      <div class="logo">
+        <img src="emedycyna.png" alt="e‑medycyna" />
+        <span>e‑medycyna</span>
+      </div>
+      <nav class="menu" aria-label="Menu">
+        <a href="#oferta">Oferta</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#specyfikacja">Specyfikacja</a>
+        <a href="#opinie">Opinie</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Otwórz menu">☰</button>
     </div>
-    <div class="icons">
-      <a class="icon-link" href="tel:+48600000000" aria-label="Zadzwoń">📞</a>
-      <a class="icon-link" href="https://wa.me/48600000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
-      <a class="icon-link" href="mailto:kontakt@twojadomena.pl" aria-label="Napisz e‑mail">✉️</a>
-      <a class="icon-link" href="#mapa" aria-label="Lokalizacja">📍</a>
-      <a class="icon-link" href="#menu" aria-label="Menu">≡</a>
+    <div class="drawer" id="drawer">
+      <nav>
+        <a href="#oferta">Oferta</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#specyfikacja">Specyfikacja</a>
+        <a href="#opinie">Opinie</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <!-- HERO: video w tle (jeśli wrzucisz hero.mp4) + fallback obraz (hero.jpg) -->
-  <header class="hero" id="home" aria-label="Sekcja powitalna">
-    <!-- Jeśli nie masz video, usuń <video> i zostaw samo .bg-img -->
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home" aria-label="Sekcja powitalna">
     <video autoplay muted loop playsinline poster="hero.jpg">
       <source src="hero.mp4" type="video/mp4" />
     </video>
-    <!-- Fallback obraz: wrzuć plik hero.jpg do repo -->
     <div class="bg-img" style="background-image:url('hero.jpg');"></div>
 
-    <div class="hero-content">
+    <div class="hero-inner">
       <div>
         <h1 class="title">E‑MEDYCYNA</h1>
         <p class="subtitle">NOWOCZESNE STUDIO • SPRZĘT • CISZA AKUSTYCZNA</p>
@@ -117,18 +187,198 @@
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
   <main id="main">
-    <section class="card" id="oferta">
-      <h2>Oferta w skrócie</h2>
-      <p>Tu możesz dodać 2–3 zdania o ofercie. Link „<a class="inline" href="#cennik">Cennik</a>” poniżej prowadzi do sekcji z pakietami (dodasz później lub w oddzielnym pliku).</p>
+    <!-- ===== OFERTA (features) ===== -->
+    <section class="section" id="oferta">
+      <span class="kicker">Dlaczego my</span>
+      <h2 class="h2">Oferta w skrócie</h2>
+      <p class="lead">Nagrania wideo/online, webinary, sesje eksperckie, telemedyczne case‑study. Rezerwacje na godziny lub dni — z obsługą techniczną.</p>
+      <div class="grid grid-3" style="margin-top:14px">
+        <article class="card feature">
+          <h3>Wygłuszone studio</h3>
+          <p>Kontrolowana akustyka i oświetlenie. Idealne do wypowiedzi eksperckich i kursów.</p>
+        </article>
+        <article class="card feature">
+          <h3>Sprzęt klasy pro</h3>
+          <p>Kamery 4K, światło LED, rejestracja wielościeżkowa audio, podgląd na żywo.</p>
+        </article>
+        <article class="card feature">
+          <h3>Wsparcie realizatora</h3>
+          <p>Pomoc w kadrach, dźwięku, prezentacjach i eksporcie materiałów.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== GALERIA ===== -->
+    <section class=\"section\" id=\"galeria\">
+      <span class=\"kicker\">Zobacz przestrzeń</span>
+      <h2 class=\"h2\">Galeria</h2>
+      <div class=\"gallery\" style=\"margin-top:12px\">
+        <!-- PODMIEŃ pliki: wrzuć do repo gal1.jpg, gal2.jpg, gal3.jpg, gal4.jpg (Twoje zdjęcia) -->
+        <img class=\"span-6\" src=\"gal1.jpg\" alt=\"Strefa lounge — fotele i kanapy\" />
+        <img class=\"span-6\" src=\"gal2.jpg\" alt=\"Plan zdjęciowy — green screen i kamery\" />
+        <img class=\"span-6\" src=\"gal3.jpg\" alt=\"Szeroki plan studia — green screen\" />
+        <img class=\"span-6\" src=\"gal4.jpg\" alt=\"Widok na reżyserkę i oświetlenie\" />
+      </div>
+    </section>
+
+    <!-- ===== CENNIK ===== -->
+    <section class="section" id="cennik">
+      <span class="kicker">Proste pakiety</span>
+      <h2 class="h2">Cennik</h2>
+      <div class="grid grid-3" style="margin-top:14px">
+        <article class="card">
+          <h3>Start</h3>
+          <div class="price">399 zł / godz.</div>
+          <ul class="clean">
+            <li>✓ Studio i światło</li>
+            <li>✓ 1 operator</li>
+            <li>✓ Materiał surowy</li>
+          </ul>
+          <div style="height:10px"></div>
+          <a class="btn btn-primary" href="#kontakt">Rezerwuj</a>
+        </article>
+        <article class="card">
+          <h3>Standard</h3>
+          <div class="price">1499 zł / pół dnia</div>
+          <ul class="clean">
+            <li>✓ 2 kamery 4K</li>
+            <li>✓ Dźwięk + korekcja</li>
+            <li>✓ Mini‑montaż</li>
+          </ul>
+          <div style="height:10px"></div>
+          <a class="btn btn-primary" href="#kontakt">Rezerwuj</a>
+        </article>
+        <article class="card">
+          <h3>Pro</h3>
+          <div class="price">2799 zł / dzień</div>
+          <ul class="clean">
+            <li>✓ 3 kamery, reżyserka</li>
+            <li>✓ Operator + realizator dźwięku</li>
+            <li>✓ Pakiet post‑produkcji</li>
+          </ul>
+          <div style="height:10px"></div>
+          <a class="btn btn-primary" href="#kontakt">Zapytaj o termin</a>
+        </article>
+      </div>
+      <p class="muted" style="margin-top:8px"><small>Ceny orientacyjne netto. Dostosujemy ofertę do Twojego formatu.</small></p>
+    </section>
+
+    <!-- ===== SPECYFIKACJA ===== -->
+    <section class="section" id="specyfikacja">
+      <span class="kicker">Parametry</span>
+      <h2 class="h2">Specyfikacja studia</h2>
+      <div class="card">
+        <table class="specs">
+          <tr><th>Powierzchnia</th><td>xxx m² (podaj rzeczywistą)</td></tr>
+          <tr><th>Wysokość</th><td>xx m do kratownicy</td></tr>
+          <tr><th>Akustyka</th><td>Wygłuszenie, niski RT60</td></tr>
+          <tr><th>Tła</th><td>Białe bezszwowe / zielone / czarne</td></tr>
+          <tr><th>Prąd</th><td>xx kW / gniazda x 16A</td></tr>
+          <tr><th>Wyposażenie</th><td>Kamera 4K x2, lampy LED, mikrofony lav/shotgun</td></tr>
+          <tr><th>Udogodnienia</th><td>Pokój make‑up, kuchnia, Wi‑Fi</td></tr>
+          <tr><th>Dojezdność</th><td>Parking / komunikacja miejska</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== OPINIE ===== -->
+    <section class="section" id="opinie">
+      <span class="kicker">Zaufali nam</span>
+      <h2 class="h2">Opinie klientów</h2>
+      <div class="grid grid-3" style="margin-top:14px">
+        <blockquote class="card">"Świetna akustyka i szybka realizacja" — Anna, producentka</blockquote>
+        <blockquote class="card">"Profesjonalny zespół, zero stresu" — Michał, lekarz prowadzący</blockquote>
+        <blockquote class="card">"Kurs nagrany w jeden dzień" — Katarzyna, szkolenia online</blockquote>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+      <span class="kicker">Pytania</span>
+      <h2 class="h2">FAQ</h2>
+      <details>
+        <summary>Jak zarezerwować termin?</summary>
+        <p>Najprościej przez formularz w kontakcie lub telefonicznie. Potwierdzamy e‑mailem.</p>
+      </details>
+      <details>
+        <summary>Czy mogę nagrać webinar na żywo?</summary>
+        <p>Tak — oferujemy streaming z grafikami i moderacją czatu.</p>
+      </details>
+      <details>
+        <summary>Czy zapewniacie montaż?</summary>
+        <p>W pakietach Standard/Pro wliczony jest podstawowy montaż. Zaawansowany montaż — wycena indywidualna.</p>
+      </details>
+    </section>
+
+    <!-- ===== KONTAKT ===== -->
+    <section class="section" id="kontakt">
+      <span class="kicker">Skontaktuj się</span>
+      <h2 class="h2">Rezerwacje i zapytania</h2>
+
+      <div class="contact-grid">
+        <div class="card">
+          <form action="mailto:kontakt@twojadomena.pl" method="post" enctype="text/plain">
+            <div class="field">
+              <label for="name">Imię i nazwisko</label>
+              <input id="name" name="name" required>
+            </div>
+            <div class="field">
+              <label for="email">E‑mail</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+            <div class="field">
+              <label for="msg">Wiadomość</label>
+              <textarea id="msg" name="message" placeholder="Opisz krótko plan nagrania"></textarea>
+            </div>
+            <div style="height:10px"></div>
+            <button class="btn btn-primary" type="submit">Wyślij</button>
+            <a class="btn btn-ghost" href="tel:+48600000000">Zadzwoń</a>
+          </form>
+        </div>
+        <div class="card" id="mapa">
+          <h3>Tu nas znajdziesz</h3>
+          <p>Adres — uzupełnij. Godziny otwarcia: pn‑pt 9:00–18:00.</p>
+          <iframe title="Mapa" style="width:100%; height:260px; border:0; border-radius:12px" loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=21.0%2C52.0%2C21.2%2C52.1&layer=mapnik"></iframe>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Pływający WhatsApp w prawym dolnym rogu -->
+  <footer style="border-top:1px solid var(--border); padding:18px 22px; color:#b8c7ea">
+    <div style="max-width:var(--maxw); margin:0 auto; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap">
+      <small>© <span id="year"></span> e‑medycyna. Wszystkie prawa zastrzeżone.</small>
+      <small>Kolor marki: #8075ed • Host: GitHub Pages</small>
+    </div>
+  </footer>
+
   <div class="wa">
     <a href="https://wa.me/48600000000" target="_blank" rel="noopener" aria-label="Napisz na WhatsApp">🟢</a>
   </div>
+
+  <script>
+    // Rok w stopce
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll dla linków zaczynających się od #
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+          // zamknij szufladę na mobile
+          drawer.classList.remove('open');
+        }
+      });
+    });
+
+    // Mobile drawer
+    const burger=document.getElementById('burger');
+    const drawer=document.getElementById('drawer');
+    burger?.addEventListener('click',()=>drawer.classList.toggle('open'));
+  </script>
 </body>
 </html>
