@@ -3,212 +3,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><!-- ZMIEŃ: --> Jan Kowalski — Konsulting / Usługi</title>
-  <meta name="description" content="Profesjonalne usługi — szybka wycena, przejrzysty cennik, kontakt." />
-
-  <!-- Estetyczna, lekka typografia (opcjonalnie możesz usunąć) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>e‑medycyna — studio / usługi medyczne</title>
+  <meta name="description" content="Nowoczesne studio/usługi. Skontaktuj się z nami — szybka wycena, dostępne terminy." />
 
   <style>
     :root{
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted:#475569;
-      --card:#f8fafc;
-      --border:#e2e8f0;
-      --accent:#2563eb;
-      --accent-weak:#dbeafe;
-      --ring: #93c5fd;
-      --shadow: 0 10px 25px rgba(15,23,42,.06);
-      --radius: 16px;
-      --maxw: 1100px;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b1220; --text:#e5eefc; --muted:#9fb0d1; --card:#0f172a; --border:#1f2a44;
-        --accent:#60a5fa; --accent-weak:#132a57; --ring:#1d4ed8; --shadow: 0 10px 25px rgba(0,0,0,.35);
-      }
+      /* KOLORY — zgodnie z prośbą */
+      --brand:#8075ed;            /* główny akcent */
+      --text:#ffffff;             /* kolor tekstu na hero */
+      --muted:rgba(255,255,255,.85);
+      --bg:#0b0f14;               /* tło poza hero */
+      --overlay:rgba(0,0,0,.45);  /* przyciemnienie video/obrazu */
+      --outline:#ffffff;          /* obrys tytułu */
+      --wa:#25D366;               /* standard WhatsApp */
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
+    html,body{height:100%;}
     body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-      background:var(--bg); color:var(--text); line-height:1.6;
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
     }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--maxw); margin:0 auto; padding:24px}
-    header{
-      position:sticky; top:0; backdrop-filter:saturate(180%) blur(8px);
-      background: color-mix(in oklab, var(--bg) 80%, transparent);
-      border-bottom:1px solid var(--border); z-index:10;
-    }
-    .nav{display:flex; gap:16px; align-items:center; justify-content:space-between}
-    .brand{font-weight:800; letter-spacing:.3px}
-    .nav a{font-weight:600}
-    .hero{padding:72px 24px 28px}
-    .hero-inner{max-width:var(--maxw); margin:0 auto; display:grid; gap:16px}
-    .hero h1{font-size: clamp(28px, 4vw, 44px); line-height:1.1; margin:0}
-    .hero p{font-size:clamp(16px, 2.2vw, 20px); color:var(--muted); margin:6px 0 0}
-    .cta-row{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; border:1px solid var(--border);
-      background:var(--accent); color:#fff; font-weight:700; box-shadow:var(--shadow);
-    }
-    .btn:hover{filter:brightness(1.05)}
-    .btn-secondary{background:var(--card); color:var(--text)}
-    section{scroll-margin-top:90px}
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow);
-    }
-    .grid{display:grid; gap:18px}
-    @media(min-width:780px){ .grid-3{grid-template-columns:repeat(3,1fr)}}
-    @media(min-width:780px){ .grid-2{grid-template-columns:repeat(2,1fr)}}
-    .section-title{font-size:clamp(20px,3vw,28px); margin:0 0 10px}
-    .muted{color:var(--muted)}
-    .pad{padding:20px}
-    .price{
-      font-size:28px; font-weight:800; margin:8px 0;
-    }
-    .chip{display:inline-block; padding:4px 10px; border-radius:999px; background:var(--accent-weak); color:var(--accent); font-weight:700; font-size:12px}
-    ul.clean{list-style:none; padding:0; margin:0}
-    ul.clean li{display:flex; gap:10px; align-items:flex-start; margin:8px 0}
-    .tick{font-weight:800}
-    .footer{border-top:1px solid var(--border); margin-top:28px}
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
-    .contact-card a{word-break:break-all}
-    .divider{height:1px; background:var(--border); margin:12px 0}
-    /* ładny focus */
-    :focus-visible{outline:3px solid var(--ring); outline-offset:2px; border-radius:10px}
-  </style>
 
-  <!-- Dane strukturalne (SEO) – uzupełnij swoje -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ProfessionalService",
-    "name":"<!-- ZMIEŃ: --> Jan Kowalski",
-    "url":"https://twoj-login.github.io/wizytowka/",
-    "priceRange":"<!-- ZMIEŃ: --> PLN",
-    "areaServed":"Polska",
-    "email":"mailto:kontakt@twojadomena.pl",
-    "telephone":"+48 600 000 000"
-  }
-  </script>
+    /* ===== NAVBAR ===== */
+    .nav{
+      position:fixed; inset:24px 24px auto 24px; z-index:30;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .logo{display:flex; align-items:center; gap:12px}
+    .logo img{height:44px; width:auto; display:block}
+    .logo span{font-weight:800; letter-spacing:.06em}
+    .icons{display:flex; align-items:center; gap:14px}
+    .icon-link{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:999px; background:rgba(0,0,0,.35); color:#fff; border:1px solid rgba(255,255,255,.25)}
+    .icon-link:hover{background:rgba(128,117,237,.35); border-color:rgba(128,117,237,.65)}
+
+    /* ===== HERO ===== */
+    .hero{position:relative; min-height:100vh; width:100vw; overflow:hidden}
+    .hero video, .hero .bg-img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.1) contrast(1.05) brightness(.9);
+    }
+    .hero .bg-img{background-size:cover; background-position:center}
+    .hero::after{content:""; position:absolute; inset:0; background:var(--overlay);}
+    .hero-content{
+      position:relative; z-index:10; height:100%; display:grid; place-items:center; padding:120px 24px 80px; text-align:center;
+    }
+    .title{
+      font-size: clamp(40px, 8vw, 120px);
+      line-height:1; margin:0 0 14px; font-weight:900;
+      color:transparent; -webkit-text-stroke: 2px var(--outline); text-transform:uppercase; letter-spacing:.06em;
+    }
+    .subtitle{margin:0 0 24px; font-size:clamp(14px,2.2vw,22px); color:var(--muted); letter-spacing:.35em}
+
+    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{appearance:none; border:none; cursor:pointer; text-decoration:none; font-weight:800; letter-spacing:.04em;
+      padding:14px 22px; border-radius:999px; transition:transform .06s ease, filter .2s ease;}
+    .btn-primary{background:var(--brand); color:#fff;}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-ghost{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5)}
+    .btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa{position:fixed; right:18px; bottom:18px; z-index:40;}
+    .wa a{display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; background:var(--wa); color:#fff; box-shadow: 0 10px 24px rgba(0,0,0,.35)}
+
+    /* ===== SEKCJA POD HERO (opcjonalna) ===== */
+    main{max-width:1100px; margin:0 auto; padding:48px 22px;}
+    .card{background:#0e1522; border:1px solid rgba(255,255,255,.08); color:#dbe7ff; border-radius:18px; padding:22px}
+    .card h2{margin:0 0 10px}
+    a.inline{color:var(--brand)}
+
+    /* dostępność */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    :focus-visible{outline:3px solid var(--brand); outline-offset:3px; border-radius:12px}
+  </style>
 </head>
 <body>
   <a class="sr-only" href="#main">Przejdź do treści</a>
 
-  <header>
-    <div class="container nav">
-      <div class="brand"><!-- ZMIEŃ: --> Jan Kowalski</div>
-      <nav aria-label="Główna nawigacja">
-        <a href="#o-mnie">O mnie</a>
-        <a href="#uslugi">Usługi i cennik</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+  <!-- NAVBAR z logotypem po lewej i ikonami po prawej -->
+  <div class="nav" role="navigation" aria-label="Główna">
+    <div class="logo">
+      <!-- PODMIEN na własny plik: emedycyna.png -->
+      <img src="emedycyna.png" alt="e‑medycyna" />
+      <span>e‑medycyna</span>
+    </div>
+    <div class="icons">
+      <a class="icon-link" href="tel:+48600000000" aria-label="Zadzwoń">📞</a>
+      <a class="icon-link" href="https://wa.me/48600000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+      <a class="icon-link" href="mailto:kontakt@twojadomena.pl" aria-label="Napisz e‑mail">✉️</a>
+      <a class="icon-link" href="#mapa" aria-label="Lokalizacja">📍</a>
+      <a class="icon-link" href="#menu" aria-label="Menu">≡</a>
+    </div>
+  </div>
+
+  <!-- HERO: video w tle (jeśli wrzucisz hero.mp4) + fallback obraz (hero.jpg) -->
+  <header class="hero" id="home" aria-label="Sekcja powitalna">
+    <!-- Jeśli nie masz video, usuń <video> i zostaw samo .bg-img -->
+    <video autoplay muted loop playsinline poster="hero.jpg">
+      <source src="hero.mp4" type="video/mp4" />
+    </video>
+    <!-- Fallback obraz: wrzuć plik hero.jpg do repo -->
+    <div class="bg-img" style="background-image:url('hero.jpg');"></div>
+
+    <div class="hero-content">
+      <div>
+        <h1 class="title">E‑MEDYCYNA</h1>
+        <p class="subtitle">NOWOCZESNE STUDIO • SPRZĘT • CISZA AKUSTYCZNA</p>
+        <div class="cta-row">
+          <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
+          <a href="#cennik" class="btn btn-ghost">Zobacz cennik</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <h1><!-- ZMIEŃ: --> Pomagam firmom rosnąć — doradztwo, wdrożenia, szkolenia.</h1>
-      <p class="muted"><!-- ZMIEŃ: --> Krótki opis Twojej oferty w 1–2 zdaniach. Np. „Projektuję proste strony, automatyzuję procesy i uczę zespoły narzędzi cyfrowych”.</p>
-      <div class="cta-row">
-        <a class="btn" href="#kontakt" aria-label="Przejdź do sekcji kontakt">Umów konsultację</a>
-        <a class="btn btn-secondary" href="#uslugi">Zobacz cennik</a>
-      </div>
-    </div>
-  </section>
-
-  <main id="main" class="container">
-    <section id="o-mnie">
-      <h2 class="section-title">O mnie</h2>
-      <div class="card pad">
-        <p><!-- ZMIEŃ: --> Jestem specjalistą z X lat doświadczenia. Pracuję z MŚP, tworzę proste rozwiązania, które przynoszą realne efekty. </p>
-        <p class="muted">Zaufali: <!-- ZMIEŃ: --> Firma A, Firma B, Firma C.</p>
-      </div>
+  <main id="main">
+    <section class="card" id="oferta">
+      <h2>Oferta w skrócie</h2>
+      <p>Tu możesz dodać 2–3 zdania o ofercie. Link „<a class="inline" href="#cennik">Cennik</a>” poniżej prowadzi do sekcji z pakietami (dodasz później lub w oddzielnym pliku).</p>
     </section>
-
-    <section id="uslugi" style="margin-top:24px">
-      <h2 class="section-title">Usługi i cennik</h2>
-      <p class="muted">Poniżej przykładowe pakiety — dopasuję zakres do Twoich potrzeb.</p>
-
-      <div class="grid grid-3" style="margin-top:12px">
-        <!-- Pakiet 1 -->
-        <article class="card pad" aria-labelledby="pakiet-start">
-          <span class="chip">Najczęściej wybierany</span>
-          <h3 id="pakiet-start" style="margin:10px 0 0"><!-- ZMIEŃ: --> Pakiet Start</h3>
-          <div class="price"><!-- ZMIEŃ: --> 399 zł</div>
-          <ul class="clean">
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Konsultacja 60 min</li>
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Prosta strona wizytówkowa (1 sekcja)</li>
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Publikacja na GitHub Pages</li>
-          </ul>
-          <div class="divider"></div>
-          <a class="btn" href="#kontakt">Zamów</a>
-        </article>
-
-        <!-- Pakiet 2 -->
-        <article class="card pad" aria-labelledby="pakiet-standard">
-          <h3 id="pakiet-standard" style="margin:0"><!-- ZMIEŃ: --> Pakiet Standard</h3>
-          <div class="price"><!-- ZMIEŃ: --> 799 zł</div>
-          <ul class="clean">
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> 3–5 sekcji (o mnie, oferta, portfolio, kontakt)</li>
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Kopia zapasowa i instrukcja edycji</li>
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Formularz kontaktowy (bezserwerowy)</li>
-          </ul>
-          <div class="divider"></div>
-          <a class="btn btn-secondary" href="#kontakt">Zapy taj o termin</a>
-        </article>
-
-        <!-- Pakiet 3 -->
-        <article class="card pad" aria-labelledby="pakiet-pro">
-          <h3 id="pakiet-pro" style="margin:0"><!-- ZMIEŃ: --> Pakiet Pro</h3>
-          <div class="price"><!-- ZMIEŃ: --> 1499 zł</div>
-          <ul class="clean">
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Dedykowany design + animacje</li>
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> Integracje (np. analytics, czat)</li>
-            <li><span class="tick">✓</span> <!-- ZMIEŃ: --> 2h wsparcia po wdrożeniu</li>
-          </ul>
-          <div class="divider"></div>
-          <a class="btn btn-secondary" href="#kontakt">Wyceń projekt</a>
-        </article>
-      </div>
-
-      <p class="muted" style="margin-top:10px"><small><!-- ZMIEŃ: --> Ceny netto. Możliwe faktury VAT. Zakres i finalna wycena po krótkiej rozmowie.</small></p>
-    </section>
-
-    <section id="kontakt" style="margin-top:24px">
-      <h2 class="section-title">Kontakt</h2>
-      <div class="card pad contact-card">
-        <p><strong><!-- ZMIEŃ: --> Jan Kowalski</strong><br>
-        <!-- ZMIEŃ: --> Warszawa i zdalnie</p>
-        <p>
-          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px"><path fill="currentColor" d="M2 4h20v16H2z" opacity=".2"/><path fill="currentColor" d="M22 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6l10 6z"/><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2l10 6l10-6a2 2 0 0 0-2-2z"/></svg>
-          <a href="mailto:<!-- ZMIEŃ: --> kontakt@twojadomena.pl">kontakt@twojadomena.pl</a><br>
-          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:-3px"><path fill="currentColor" d="M6.62 10.79a15.07 15.07 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24a11.36 11.36 0 0 0 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 6a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1a11.36 11.36 0 0 0 .57 3.56a1 1 0 0 1-.24 1.05z"/></svg>
-          <a href="tel:+48600000000">+48 600 000 000</a>
-        </p>
-        <div class="cta-row">
-          <a class="btn" href="mailto:<!-- ZMIEŃ: --> kontakt@twojadomena.pl?subject=Zapytanie%20ze%20strony">Wyślij zapytanie</a>
-          <a class="btn btn-secondary" href="#uslugi">Sprawdź pakiety</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="container footer">
-      <p class="muted">
-        © <span id="year"></span> <!-- ZMIEŃ: --> Jan Kowalski.
-        <span style="opacity:.7">Zbudowano w HTML/CSS i hostowane na GitHub Pages.</span>
-      </p>
-    </footer>
   </main>
 
-  <script>
-    // automatyczny rok w stopce
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- Pływający WhatsApp w prawym dolnym rogu -->
+  <div class="wa">
+    <a href="https://wa.me/48600000000" target="_blank" rel="noopener" aria-label="Napisz na WhatsApp">🟢</a>
+  </div>
 </body>
 </html>
