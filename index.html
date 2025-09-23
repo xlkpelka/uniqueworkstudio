@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>e‑medycyna — studio / usługi medyczne</title>
+  <title>Studio — usługi medyczne</title>
   <meta name="description" content="Nowoczesne studio i oferta usług. Rezerwacje, cennik, specyfikacja, kontakt." />
 
   <style>
@@ -43,7 +43,6 @@
     .nav{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px}
     .logo{display:flex; align-items:center; gap:12px}
     .logo img{height:44px; width:auto; display:block}
-    .logo span{font-weight:800; letter-spacing:.06em}
     .nav a{color:var(--text)}
     .menu{display:flex; gap:16px; align-items:center}
     .menu a{opacity:.9}
@@ -104,6 +103,12 @@
     .span-12{grid-column:span 12}
     @media(max-width:860px){.span-6,.span-3,.span-12{grid-column:span 12}}
 
+    /* ===== GALERIA — dropzone ===== */
+    .dropzone{border:2px dashed var(--border); border-radius:16px; padding:22px; text-align:center; color:#cfe0ff; background:rgba(255,255,255,.03)}
+    .dropzone.dragover{border-color:color-mix(in oklab, var(--brand) 60%, transparent); background:rgba(128,117,237,.08)}
+    .thumb{position:relative}
+    .thumb button{position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff; border:0; border-radius:10px; padding:6px 8px; cursor:pointer}
+
     /* ===== PRICING ===== */
     .price{font-size:28px; font-weight:900; margin:10px 0}
     .muted{color:#9fb0d1}
@@ -143,8 +148,8 @@
   <header class="site">
     <div class="nav" role="navigation" aria-label="Główna">
       <div class="logo">
-        <img src="emedycyna.png" alt="e‑medycyna" />
-        <span>e‑medycyna</span>
+        <!-- Podmień na własny plik logo, jeśli chcesz -->
+        <img src="logo.png" alt="Logo" />
       </div>
       <nav class="menu" aria-label="Menu">
         <a href="#oferta">Oferta</a>
@@ -179,7 +184,7 @@
 
     <div class="hero-inner">
       <div>
-        <h1 class="title"></h1>
+        <h1 class="title">Studio nagrań</h1>
         <p class="subtitle">CYKLORAMA • SPRZĘT • CISZA AKUSTYCZNA</p>
         <div class="cta-row">
           <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
@@ -212,15 +217,25 @@
     </section>
 
     <!-- ===== GALERIA ===== -->
-    <section class=\"section\" id=\"galeria\">
-      <span class=\"kicker\">Zobacz przestrzeń</span>
-      <h2 class=\"h2\">Galeria</h2>
-      <div class=\"gallery\" style=\"margin-top:12px\">
-        <!-- PODMIEŃ pliki: wrzuć do repo gal1.jpg, gal2.jpg, gal3.jpg, gal4.jpg (Twoje zdjęcia) -->
-        <img class=\"span-6\" src=\"gal1.jpg\" alt=\"Strefa lounge — fotele i kanapy\" />
-        <img class=\"span-6\" src=\"gal2.jpg\" alt=\"Plan zdjęciowy — green screen i kamery\" />
-        <img class=\"span-6\" src=\"gal3.jpg\" alt=\"Szeroki plan studia — green screen\" />
-        <img class=\"span-6\" src=\"gal4.jpg\" alt=\"Widok na reżyserkę i oświetlenie\" />
+    <section class="section" id="galeria">
+      <span class="kicker">Zobacz przestrzeń</span>
+      <h2 class="h2">Galeria</h2>
+
+      <div class="card dropzone" id="dropzone" aria-label="Strefa dodawania zdjęć">
+        <p><strong>Przeciągnij i upuść</strong> zdjęcia tutaj lub
+          <label for="pick" style="text-decoration:underline; cursor:pointer">wybierz z dysku</label>.</p>
+        <input id="pick" type="file" accept="image/*" multiple class="sr-only" />
+        <p class="muted"><small>Zdjęcia są wyświetlane lokalnie (nie wysyłamy ich na serwer).</small></p>
+      </div>
+
+      <div class="gallery" id="gallery" style="margin-top:12px">
+        <!-- Możesz też wstawić na stałe poniższe obrazy (zastąp pliki swoimi) -->
+        <!--
+        <img class="span-6" src="gal1.jpg" alt="Strefa lounge — fotele i kanapy" />
+        <img class="span-6" src="gal2.jpg" alt="Plan zdjęciowy — green screen i kamery" />
+        <img class="span-6" src="gal3.jpg" alt="Szeroki plan studia — green screen" />
+        <img class="span-6" src="gal4.jpg" alt="Widok na reżyserkę i oświetlenie" />
+        -->
       </div>
     </section>
 
@@ -349,8 +364,8 @@
 
   <footer style="border-top:1px solid var(--border); padding:18px 22px; color:#b8c7ea">
     <div style="max-width:var(--maxw); margin:0 auto; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap">
-      <small>© <span id="year"></span> e‑medycyna. Wszystkie prawa zastrzeżone.</small>
-      <small>Kolor marki: #8075ed • Host: GitHub Pages</small>
+      <small>© <span id="year"></span>. Wszystkie prawa zastrzeżone.</small>
+      <small>Kolor akcentu: #8075ed • Host: GitHub Pages</small>
     </div>
   </footer>
 
@@ -379,6 +394,51 @@
     const burger=document.getElementById('burger');
     const drawer=document.getElementById('drawer');
     burger?.addEventListener('click',()=>drawer.classList.toggle('open'));
+
+    // ===== GALERIA: dodawanie zdjęć (drag&drop + wybór z dysku) =====
+    const dropzone = document.getElementById('dropzone');
+    const pick = document.getElementById('pick');
+    const gallery = document.getElementById('gallery');
+
+    const stop = e => { e.preventDefault(); e.stopPropagation(); };
+    ['dragenter','dragover','dragleave','drop'].forEach(evt => {
+      dropzone.addEventListener(evt, stop, false);
+    });
+    ['dragenter','dragover'].forEach(evt => {
+      dropzone.addEventListener(evt, ()=>dropzone.classList.add('dragover'));
+    });
+    ['dragleave','drop'].forEach(evt => {
+      dropzone.addEventListener(evt, ()=>dropzone.classList.remove('dragover'));
+    });
+
+    dropzone.addEventListener('drop', (e)=>{
+      handleFiles(e.dataTransfer.files);
+    });
+    pick.addEventListener('change', (e)=>{
+      handleFiles(e.target.files);
+    });
+
+    function handleFiles(fileList){
+      const files = Array.from(fileList).filter(f=>/^image\//.test(f.type));
+      if(!files.length) return;
+      files.forEach(file=>{
+        const reader = new FileReader();
+        reader.onload = ev => addThumb(ev.target.result, file.name);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function addThumb(src, alt){
+      const wrap = document.createElement('div');
+      wrap.className = 'thumb span-6';
+      const img = document.createElement('img');
+      img.src = src; img.alt = alt || 'Zdjęcie w galerii';
+      const del = document.createElement('button');
+      del.type = 'button'; del.innerText = 'Usuń';
+      del.addEventListener('click', ()=> wrap.remove());
+      wrap.appendChild(img); wrap.appendChild(del);
+      gallery.appendChild(wrap);
+    }
   </script>
 </body>
 </html>
