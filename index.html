@@ -1,219 +1,226 @@
-<!doctype html>
-<html lang="pl">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>e-medycyna — nowoczesne studio i usługi medyczne</title>
-  <meta name="description" content="Rezerwacje online, przejrzysty cennik i konsultacje. Szybki kontakt i terminy. Sprawdź ofertę e-medycyna." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="e-medycyna — studio / usługi medyczne">
-  <meta property="og:description" content="Rezerwacje online, cennik, konsultacje.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://twojadomena.pl">
-  <meta property="og:image" content="https://twojadomena.pl/og.jpg">
-
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      /* KOLORY */
-      --brand:#8075ed;            /* główny akcent */
-      --text:#ffffff;             /* tekst na ciemnym */
-      --muted:rgba(255,255,255,.85);
-      --bg:#0b0f14;               /* tło */
-      --surface:#0e1522;          /* karty */
-      --border:rgba(255,255,255,.12);
-      --overlay:rgba(0,0,0,.45);  /* przyciemnienie hero */
-      --outline:#ffffff;          /* obrys tytułu */
-      --wa:#25D366;               /* WhatsApp */
-    }
-
-    /* RESET / BAZA */
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg); color:var(--text); line-height:1.6; letter-spacing:.01em;
-      text-rendering:optimizeLegibility;
-    }
-    img{max-width:100%; height:auto; display:block}
-    a{color:inherit}
-
-    /* LAYOUT */
-    .container{max-width:1200px; margin:auto; padding:clamp(16px,3vw,32px)}
-    .btn{
-      background:var(--brand); color:#fff; padding:.85rem 1.15rem; border-radius:.9rem;
-      border:1px solid var(--border); text-decoration:none; display:inline-block; font-weight:600
-    }
-    .btn.ghost{background:transparent; color:var(--text)}
-    .btn.full{display:block; text-align:center; width:100%}
-
-    /* HEADER */
-    .site-header{position:sticky; top:0; z-index:50; background:rgba(11,15,20,.7); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid var(--border)}
-    .nav{display:flex; gap:1rem; align-items:center; justify-content:space-between}
-    .logo{color:var(--text); font-weight:800; text-decoration:none; letter-spacing:.02em}
-    .main-nav{display:flex; gap:.5rem; align-items:center}
-    .main-nav a{padding:.45rem .7rem; text-decoration:none; border-radius:.6rem}
-    .main-nav a:hover{background:rgba(255,255,255,.06)}
-    .burger{display:none; background:transparent; border:1px solid var(--border); color:var(--text); padding:.5rem .7rem; border-radius:.6rem}
-
-    /* HERO */
-    .hero{position:relative; isolation:isolate; background:
-      radial-gradient(1200px 600px at 80% -20%, rgba(128,117,237,.25), transparent 60%),
-      linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%)}
-    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:min(5vw,48px); align-items:center}
-    .hero-title{
-      font-size:clamp(36px,5.2vw,64px); line-height:1.05; margin:0 0 .6rem; text-wrap:balance;
-      text-shadow:0 1px 0 rgba(0,0,0,.2)
-    }
-    .hero-sub{color:var(--muted); max-width:58ch; margin:0 0 1.1rem}
-    .hero-media img{border-radius:1.2rem; border:1px solid var(--border)}
-
-    /* SEKCJA: USŁUGI */
-    .section{padding-block:clamp(28px,6vw,72px)}
-    .section h2{font-size:clamp(24px,3.4vw,36px); margin:0 0 1rem; text-wrap:balance}
-    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:min(3vw,20px)}
-    .card{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem; display:flex; flex-direction:column; gap:.6rem}
-    .card img{border-radius:.6rem}
-    .card h3{margin:.2rem 0 .2rem; font-size:1.1rem}
-    .card .link{color:var(--brand); text-decoration:none; font-weight:600}
-
-    /* TRUST */
-    .logo-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:min(3vw,24px); align-items:center; list-style:none; margin:0; padding:0}
-    .logo-strip img{max-height:36px; width:auto; opacity:.9; filter:grayscale(1)}
-
-    /* CENNIK */
-    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:min(3vw,20px)}
-    .price{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem}
-    .price h3{margin:.2rem 0}
-    .price .amount{font-size:1.75rem; font-weight:800; margin:.4rem 0}
-    .price ul{margin:.6rem 0 0; padding-left:1.1rem}
-    .badge{display:inline-block; font-size:.8rem; padding:.2rem .5rem; border:1px solid var(--border); border-radius:.6rem; margin-left:.5rem}
-
-    /* FAQ */
-    details.faq{background:var(--surface); border:1px solid var(--border); border-radius:.9rem; padding:.8rem 1rem}
-    details.faq + details.faq{margin-top:.6rem}
-    details.faq summary{cursor:pointer; font-weight:600}
-    details.faq[open]{box-shadow:0 10px 30px rgba(0,0,0,.18)}
-
-    /* KONTAKT */
-    .contact-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:min(3vw,20px)}
-    .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem}
-    .contact-list{list-style:none; margin:0; padding:0; display:grid; gap:.6rem}
-    .contact-list a{text-decoration:none}
-    .whatsapp{color:#000; background:var(--wa); border-color:transparent}
-    .map{border:1px solid var(--border); border-radius:1rem; overflow:hidden}
-
-    /* STOPKA */
-    footer{border-top:1px solid var(--border); color:var(--muted); padding-block:24px}
-    .foot{display:grid; grid-template-columns:2fr 1fr 1fr; gap:20px; align-items:start}
-    .foot a{text-decoration:none}
-
-    /* RESPONSYWNOŚĆ */
-    @media (max-width:1024px){
-      .hero-grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-      .pricing{grid-template-columns:1fr 1fr}
-      .foot{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width:760px){
-      .cards{grid-template-columns:1fr}
-      .pricing{grid-template-columns:1fr}
-      .logo-strip{grid-template-columns:repeat(3,1fr)}
-      .main-nav{display:none}
-      .burger{display:inline-flex}
-      .main-nav.open{display:flex; position:absolute; right:16px; top:64px; flex-direction:column;
-        background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:.6rem; gap:.2rem}
-      .main-nav.open a{padding:.6rem .8rem}
-    }
-  </style>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
 </head>
-<body>
+<body class="w3-black">
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="logo" href="/" aria-label="Strona główna e-medycyna">e-medycyna</a>
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <img src="/w3images/avatar_smoke.jpg" style="width:100%">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>PHOTOS</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+</nav>
 
-      <nav class="main-nav" id="mainNav" aria-label="Główne menu">
-        <a href="#uslugi">Usługi</a>
-        <a href="#cennik">Cennik</a>
-        <a href="#faq">FAQ</a>
-        <a href="#kontakt">Kontakt</a>
-        <a class="btn" href="#umow" id="umowTop">Umów wizytę</a>
-      </nav>
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
 
-      <button class="burger" aria-controls="mainNav" aria-expanded="false" id="burgerBtn">Menu</button>
-    </div>
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> John Doe.</h1>
+    <p>Photographer and Web Designer.</p>
+    <img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="umow">
-    <div class="container hero-grid">
-      <div>
-        <h1 class="hero-title">Robimy medycynę prostą.</h1>
-        <p class="hero-sub">Rezerwacje online, przejrzysty cennik i specjaliści na wyciągnięcie ręki. Zadbaj o zdrowie bez zbędnych formalności.</p>
-        <div style="display:flex; gap:.6rem; flex-wrap:wrap">
-          <a class="btn" href="#kontakt">Umów wizytę</a>
-          <a class="btn ghost" href="#cennik" aria-label="Przejdź do cennika">Zobacz cennik</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img src="/assets/hero.webp" width="1200" height="900" alt="Nowoczesne studio medyczne z recepcją i gabinetem" loading="eager" decoding="async">
-      </div>
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">My Name</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>Some text about me. Some text about me. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+    <p class="w3-wide">Photography</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
     </div>
-  </section>
-
-  <!-- USŁUGI -->
-  <section id="uslugi" class="section">
-    <div class="container">
-      <h2>Jak możemy pomóc?</h2>
-      <div class="cards">
-        <article class="card">
-          <img src="/assets/srv1.webp" width="800" height="550" alt="Rezerwacje online — wybór terminu i specjalisty" loading="lazy" decoding="async">
-          <h3>Rezerwacje online</h3>
-          <p>Wybierz termin i specjalistę bez dzwonienia — potwierdzenie otrzymasz SMS-em i e-mailem.</p>
-          <a class="link" href="#kontakt">Czytaj więcej →</a>
-        </article>
-
-        <article class="card">
-          <img src="/assets/srv2.webp" width="800" height="550" alt="Cennik usług medycznych" loading="lazy" decoding="async">
-          <h3>Cennik</h3>
-          <p>Przejrzyście, bez zaskoczeń. Płatność kartą, BLIK lub online. Zniżki pakietowe.</p>
-          <a class="link" href="#cennik">Czytaj więcej →</a>
-        </article>
-
-        <article class="card">
-          <img src="/assets/srv3.webp" width="800" height="550" alt="Konsultacje online — szybka teleporada" loading="lazy" decoding="async">
-          <h3>Konsultacje online</h3>
-          <p>Teleporada i e-recepta bez wychodzenia z domu — wygodnie i bezpiecznie.</p>
-          <a class="link" href="#faq">Czytaj więcej →</a>
-        </article>
+    <p class="w3-wide">Web Design</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:85%"></div>
+    </div>
+    <p class="w3-wide">Photoshop</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
+    </div><br>
+    
+    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">11+</span><br>
+        Partners
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">55+</span><br>
+        Projects Done
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">89+</span><br>
+        Happy Clients
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">150+</span><br>
+        Meetings
       </div>
     </div>
-  </section>
 
-  <!-- ZAUFALI NAM -->
-  <section aria-label="Zaufali nam" class="section">
-    <div class="container">
-      <h2 class="sr-only" style="position:absolute; left:-9999px; top:auto">Zaufali nam</h2>
-      <ul class="logo-strip">
-        <li><img src="/assets/logo1.svg" width="160" height="40" alt="Partner 1" loading="lazy" decoding="async"></li>
-        <li><img src="/assets/logo2.svg" width="160" height="40" alt="Partner 2" loading="lazy" decoding="async"></li>
-        <li><img src="/assets/logo3.svg" width="160" height="40" alt="Partner 3" loading="lazy" decoding="async"></li>
-        <li><img src="/assets/logo4.svg" width="160" height="40" alt="Partner 4" loading="lazy" decoding="async"></li>
-        <li><img src="/assets/logo5.svg" width="160" height="40" alt="Partner 5" loading="lazy" decoding="async"></li>
-      </ul>
+    <button class="w3-button w3-light-grey w3-padding-large w3-section">
+      <i class="fa fa-download"></i> Download Resume
+    </button>
+    
+    <!-- Grid for pricing tables -->
+    <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+          <li class="w3-padding-16">Web Design</li>
+          <li class="w3-padding-16">Photography</li>
+          <li class="w3-padding-16">5GB Storage</li>
+          <li class="w3-padding-16">Mail Support</li>
+          <li class="w3-padding-16">
+            <h2>$ 10</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
+          <li class="w3-padding-16">Web Design</li>
+          <li class="w3-padding-16">Photography</li>
+          <li class="w3-padding-16">50GB Storage</li>
+          <li class="w3-padding-16">Endless Support</li>
+          <li class="w3-padding-16">
+            <h2>$ 25</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+          </li>
+        </ul>
+      </div>
+    <!-- End Grid/Pricing tables -->
     </div>
-  </section>
+    
+    <!-- Testimonials -->
+    <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>  
+    <img src="/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+    <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
+    <p>John Doe saved us from a web disaster.</p><br>
+    
+    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+    <p><span class="w3-large w3-margin-right">Rebecca Flex.</span> CEO at Company.</p>
+    <p>No one is better than John Doe.</p>
+  <!-- End About Section -->
+  </div>
+  
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="photos">
+    <h2 class="w3-text-light-grey">My Photos</h2>
+    <hr style="width:200px" class="w3-opacity">
 
-  <!-- CENNIK -->
-  <section id="cennik" class="section">
-    <div class="container">
-      <h2>Cennik</h2>
-      <div class="
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="/w3images/wedding.jpg" style="width:100%">
+        <img src="/w3images/rocks.jpg" style="width:100%">
+        <img src="/w3images/sailboat.jpg" style="width:100%">
+      </div>
+
+      <div class="w3-half">
+        <img src="/w3images/underwater.jpg" style="width:100%">
+        <img src="/w3images/chef.jpg" style="width:100%">
+        <img src="/w3images/wedding.jpg" style="width:100%">
+        <img src="/w3images/p6.jpg" style="width:100%">
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Portfolio Section -->
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Contact Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Chicago, US</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+    </div><br>
+    <p>Let's get in touch. Send me a message:</p>
+
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </p>
+    </form>
+  <!-- End Contact Section -->
+  </div>
+  
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <!-- End footer -->
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
