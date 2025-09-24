@@ -3,8 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Studio nagrań</title>
-  <meta name="description" content="Nowoczesne studio i oferta usług. Rezerwacje, cennik, specyfikacja, kontakt." />
+
+  <title>e-medycyna — nowoczesne studio i usługi medyczne</title>
+  <meta name="description" content="Rezerwacje online, przejrzysty cennik i konsultacje. Szybki kontakt i terminy. Sprawdź ofertę e-medycyna." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="e-medycyna — studio / usługi medyczne">
+  <meta property="og:description" content="Rezerwacje online, cennik, konsultacje.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://twojadomena.pl">
+  <meta property="og:image" content="https://twojadomena.pl/og.jpg">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -18,417 +31,189 @@
       --overlay:rgba(0,0,0,.45);  /* przyciemnienie hero */
       --outline:#ffffff;          /* obrys tytułu */
       --wa:#25D366;               /* WhatsApp */
-      --maxw:1200px;
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
 
+    /* RESET / BAZA */
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; background:var(--bg); color:var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Oxygen, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      line-height:1.5;
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6; letter-spacing:.01em;
+      text-rendering:optimizeLegibility;
     }
+    img{max-width:100%; height:auto; display:block}
+    a{color:inherit}
 
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    /* ===== STICKY NAV ===== */
-    header.site{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
-      background:color-mix(in oklab, var(--bg) 80%, transparent);
-      border-bottom:1px solid var(--border);
+    /* LAYOUT */
+    .container{max-width:1200px; margin:auto; padding:clamp(16px,3vw,32px)}
+    .btn{
+      background:var(--brand); color:#fff; padding:.85rem 1.15rem; border-radius:.9rem;
+      border:1px solid var(--border); text-decoration:none; display:inline-block; font-weight:600
     }
-    .nav{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px}
-    .logo{display:flex; align-items:center; gap:12px}
-    .logo img{height:44px; width:auto; display:block}
-    .nav a{color:var(--text)}
-    .menu{display:flex; gap:16px; align-items:center}
-    .menu a{opacity:.9}
-    .menu a:hover{opacity:1}
-    .burger{display:none; cursor:pointer; font-size:26px}
-    @media(max-width:860px){
-      .menu{display:none}
-      .burger{display:block}
+    .btn.ghost{background:transparent; color:var(--text)}
+    .btn.full{display:block; text-align:center; width:100%}
+
+    /* HEADER */
+    .site-header{position:sticky; top:0; z-index:50; background:rgba(11,15,20,.7); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid var(--border)}
+    .nav{display:flex; gap:1rem; align-items:center; justify-content:space-between}
+    .logo{color:var(--text); font-weight:800; text-decoration:none; letter-spacing:.02em}
+    .main-nav{display:flex; gap:.5rem; align-items:center}
+    .main-nav a{padding:.45rem .7rem; text-decoration:none; border-radius:.6rem}
+    .main-nav a:hover{background:rgba(255,255,255,.06)}
+    .burger{display:none; background:transparent; border:1px solid var(--border); color:var(--text); padding:.5rem .7rem; border-radius:.6rem}
+
+    /* HERO */
+    .hero{position:relative; isolation:isolate; background:
+      radial-gradient(1200px 600px at 80% -20%, rgba(128,117,237,.25), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%)}
+    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:min(5vw,48px); align-items:center}
+    .hero-title{
+      font-size:clamp(36px,5.2vw,64px); line-height:1.05; margin:0 0 .6rem; text-wrap:balance;
+      text-shadow:0 1px 0 rgba(0,0,0,.2)
     }
+    .hero-sub{color:var(--muted); max-width:58ch; margin:0 0 1.1rem}
+    .hero-media img{border-radius:1.2rem; border:1px solid var(--border)}
 
-    /* ===== MOBILE DRAWER ===== */
-    .drawer{position:fixed; inset:auto 0 0 0; background:var(--surface); border-top:1px solid var(--border); transform:translateY(100%); transition:transform .25s ease; z-index:60}
-    .drawer.open{transform:translateY(0)}
-    .drawer nav{display:grid; gap:14px; padding:18px 20px}
-    .drawer a{color:var(--text)}
+    /* SEKCJA: USŁUGI */
+    .section{padding-block:clamp(28px,6vw,72px)}
+    .section h2{font-size:clamp(24px,3.4vw,36px); margin:0 0 1rem; text-wrap:balance}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:min(3vw,20px)}
+    .card{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem; display:flex; flex-direction:column; gap:.6rem}
+    .card img{border-radius:.6rem}
+    .card h3{margin:.2rem 0 .2rem; font-size:1.1rem}
+    .card .link{color:var(--brand); text-decoration:none; font-weight:600}
 
-    /* ===== HERO ===== */
-    .hero{position:relative; min-height:88vh; width:100%; overflow:hidden}
-    .hero video, .hero .bg-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.06) contrast(1.05) brightness(.9)}
-    .hero .bg-img{background-size:cover; background-position:center}
-    .hero::after{content:""; position:absolute; inset:0; background:var(--overlay)}
-    .hero-inner{position:relative; z-index:10; min-height:88vh; display:grid; place-items:center; padding:120px 24px 80px; text-align:center}
-    .title{font-size: clamp(44px, 8.6vw, 132px); line-height:.95; margin:0 0 14px; font-weight:900; color:transparent; -webkit-text-stroke: 2px var(--outline); text-transform:uppercase; letter-spacing:.06em}
-    .subtitle{margin:0 0 24px; font-size:clamp(14px,2.2vw,22px); color:var(--muted); letter-spacing:.35em}
-    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-    .btn{appearance:none; border:none; cursor:pointer; text-decoration:none; font-weight:800; letter-spacing:.04em; padding:14px 22px; border-radius:999px; transition:transform .06s ease, filter .2s ease}
-    .btn:active{transform:translateY(1px)}
-    .btn-primary{background:var(--brand); color:#fff}
-    .btn-primary:hover{filter:brightness(1.05)}
-    .btn-ghost{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.5)}
-    .btn-ghost:hover{background:rgba(255,255,255,.08)}
+    /* TRUST */
+    .logo-strip{display:grid; grid-template-columns:repeat(5,1fr); gap:min(3vw,24px); align-items:center; list-style:none; margin:0; padding:0}
+    .logo-strip img{max-height:36px; width:auto; opacity:.9; filter:grayscale(1)}
 
-    /* ===== LAYOUT ===== */
-    main{max-width:var(--maxw); margin:0 auto; padding:48px 22px}
-    .section{margin:32px 0}
-    .h2{font-size:clamp(22px,3.2vw,34px); margin:0 0 12px}
-    .lead{color:#dbe7ff}
+    /* CENNIK */
+    .pricing{display:grid; grid-template-columns:repeat(3,1fr); gap:min(3vw,20px)}
+    .price{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem}
+    .price h3{margin:.2rem 0}
+    .price .amount{font-size:1.75rem; font-weight:800; margin:.4rem 0}
+    .price ul{margin:.6rem 0 0; padding-left:1.1rem}
+    .badge{display:inline-block; font-size:.8rem; padding:.2rem .5rem; border:1px solid var(--border); border-radius:.6rem; margin-left:.5rem}
 
-    /* ===== CARDS / GRID ===== */
-    .grid{display:grid; gap:18px}
-    .grid-2{grid-template-columns:repeat(2,1fr)}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media(max-width:980px){.grid-3{grid-template-columns:1fr 1fr}}
-    @media(max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr}}
+    /* FAQ */
+    details.faq{background:var(--surface); border:1px solid var(--border); border-radius:.9rem; padding:.8rem 1rem}
+    details.faq + details.faq{margin-top:.6rem}
+    details.faq summary{cursor:pointer; font-weight:600}
+    details.faq[open]{box-shadow:0 10px 30px rgba(0,0,0,.18)}
 
-    .card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px; color:#e7f0ff; box-shadow:var(--shadow)}
-    .kicker{display:inline-block; padding:4px 10px; border-radius:999px; background:color-mix(in oklab, var(--brand) 18%, #ffffff12); color:#fff; font-weight:700; font-size:12px; border:1px solid color-mix(in oklab, var(--brand) 60%, transparent)}
+    /* KONTAKT */
+    .contact-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:min(3vw,20px)}
+    .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:1rem}
+    .contact-list{list-style:none; margin:0; padding:0; display:grid; gap:.6rem}
+    .contact-list a{text-decoration:none}
+    .whatsapp{color:#000; background:var(--wa); border-color:transparent}
+    .map{border:1px solid var(--border); border-radius:1rem; overflow:hidden}
 
-    /* ===== FEATURES ===== */
-    .feature h3{margin:6px 0}
-    .feature p{margin:6px 0 0; color:#c7d7ff}
+    /* STOPKA */
+    footer{border-top:1px solid var(--border); color:var(--muted); padding-block:24px}
+    .foot{display:grid; grid-template-columns:2fr 1fr 1fr; gap:20px; align-items:start}
+    .foot a{text-decoration:none}
 
-    /* ===== GALLERY ===== */
-    .gallery{display:grid; grid-template-columns:repeat(12,1fr); gap:10px}
-    .gallery img{width:100%; height:100%; object-fit:cover; border-radius:14px; border:1px solid var(--border)}
-    .span-6{grid-column:span 6}
-    .span-3{grid-column:span 3}
-    .span-12{grid-column:span 12}
-    @media(max-width:860px){.span-6,.span-3,.span-12{grid-column:span 12}}
-
-    /* ===== GALERIA — dropzone ===== */
-    .dropzone{border:2px dashed var(--border); border-radius:16px; padding:22px; text-align:center; color:#cfe0ff; background:rgba(255,255,255,.03)}
-    .dropzone.dragover{border-color:color-mix(in oklab, var(--brand) 60%, transparent); background:rgba(128,117,237,.08)}
-    .thumb{position:relative}
-    .thumb button{position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); color:#fff; border:0; border-radius:10px; padding:6px 8px; cursor:pointer}
-
-    /* ===== PRICING ===== */
-    .price{font-size:28px; font-weight:900; margin:10px 0}
-    .muted{color:#9fb0d1}
-    ul.clean{list-style:none; padding:0; margin:0}
-    ul.clean li{display:flex; gap:10px; align-items:flex-start; margin:8px 0}
-
-    /* ===== SPECS ===== */
-    .specs{width:100%; border-collapse:collapse}
-    .specs th,.specs td{border:1px solid var(--border); padding:10px; text-align:left}
-    .specs th{background:color-mix(in oklab, var(--brand) 18%, #000)}
-
-    /* ===== FAQ (accordion) ===== */
-    details{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:14px}
-    details+details{margin-top:10px}
-    details[open]{border-color:color-mix(in oklab, var(--brand) 55%, transparent)}
-
-    /* ===== CONTACT ===== */
-    .contact-grid{display:grid; gap:18px; grid-template-columns:2fr 3fr}
-    @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
-    .field{display:grid; gap:6px}
-    input,textarea{background:#0c1220; border:1px solid var(--border); color:#e7f0ff; padding:12px 14px; border-radius:12px}
-    textarea{min-height:140px}
-
-    /* ===== FLOATING WHATSAPP ===== */
-    .wa{position:fixed; right:18px; bottom:18px; z-index:60}
-    .wa a{display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:999px; background:var(--wa); color:#fff; box-shadow:var(--shadow)}
-
-    /* dostępność */
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
-    :focus-visible{outline:3px solid var(--brand); outline-offset:3px; border-radius:12px}
+    /* RESPONSYWNOŚĆ */
+    @media (max-width:1024px){
+      .hero-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:760px){
+      .cards{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .logo-strip{grid-template-columns:repeat(3,1fr)}
+      .main-nav{display:none}
+      .burger{display:inline-flex}
+      .main-nav.open{display:flex; position:absolute; right:16px; top:64px; flex-direction:column;
+        background:var(--surface); border:1px solid var(--border); border-radius:1rem; padding:.6rem; gap:.2rem}
+      .main-nav.open a{padding:.6rem .8rem}
+    }
   </style>
 </head>
 <body>
-  <a class="sr-only" href="#main">Przejdź do treści</a>
 
-  <!-- ===== STICKY NAVBAR ===== -->
-  <header class="site">
-    <div class="nav" role="navigation" aria-label="Główna">
-      <div class="logo">
-        <!-- Podmień na własny plik logo, jeśli chcesz -->
-        <img src="logo.png" alt="Logo" />
-      </div>
-      <nav class="menu" aria-label="Menu">
-        <a href="#oferta">Oferta</a>
-        <a href="#galeria">Galeria</a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="/" aria-label="Strona główna e-medycyna">e-medycyna</a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Główne menu">
+        <a href="#uslugi">Usługi</a>
         <a href="#cennik">Cennik</a>
-        <a href="#specyfikacja">Specyfikacja</a>
-        <a href="#opinie">Opinie</a>
         <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
+        <a class="btn" href="#umow" id="umowTop">Umów wizytę</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Otwórz menu">☰</button>
-    </div>
-    <div class="drawer" id="drawer">
-      <nav>
-        <a href="#oferta">Oferta</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#cennik">Cennik</a>
-        <a href="#specyfikacja">Specyfikacja</a>
-        <a href="#opinie">Opinie</a>
-        <a href="#faq">FAQ</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+
+      <button class="burger" aria-controls="mainNav" aria-expanded="false" id="burgerBtn">Menu</button>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home" aria-label="Sekcja powitalna">
-    <video autoplay muted loop playsinline poster="hero.jpg">
-      <source src="hero.mp4" type="video/mp4" />
-    </video>
-    <div class="bg-img" style="background-image:url('hero.jpg');"></div>
-
-    <div class="hero-inner">
+  <!-- HERO -->
+  <section class="hero" id="umow">
+    <div class="container hero-grid">
       <div>
-        <h1 class="title">Studio nagrań</h1>
-        <p class="subtitle">CYKLORAMA • SPRZĘT • CISZA AKUSTYCZNA</p>
-        <div class="cta-row">
-          <a href="#kontakt" class="btn btn-primary">Skontaktuj się</a>
-          <a href="#cennik" class="btn btn-ghost">Zobacz cennik</a>
+        <h1 class="hero-title">Robimy medycynę prostą.</h1>
+        <p class="hero-sub">Rezerwacje online, przejrzysty cennik i specjaliści na wyciągnięcie ręki. Zadbaj o zdrowie bez zbędnych formalności.</p>
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap">
+          <a class="btn" href="#kontakt">Umów wizytę</a>
+          <a class="btn ghost" href="#cennik" aria-label="Przejdź do cennika">Zobacz cennik</a>
         </div>
+      </div>
+      <div class="hero-media">
+        <img src="/assets/hero.webp" width="1200" height="900" alt="Nowoczesne studio medyczne z recepcją i gabinetem" loading="eager" decoding="async">
       </div>
     </div>
   </section>
 
-  <main id="main">
-    <!-- ===== OFERTA (features) ===== -->
-    <section class="section" id="oferta">
-      <span class="kicker">Dlaczego my</span>
-      <h2 class="h2">Oferta w skrócie</h2>
-      <p class="lead">Nagrania wideo/online, webinary, sesje eksperckie, telemedyczne case‑study. Rezerwacje na godziny lub dni — z obsługą techniczną.</p>
-      <div class="grid grid-3" style="margin-top:14px">
-        <article class="card feature">
-          <h3>Wygłuszone studio</h3>
-          <p>Kontrolowana akustyka i oświetlenie. Idealne do wypowiedzi eksperckich i kursów.</p>
-        </article>
-        <article class="card feature">
-          <h3>Sprzęt klasy pro</h3>
-          <p>Kamery 4K, światło LED, rejestracja wielościeżkowa audio, podgląd na żywo.</p>
-        </article>
-        <article class="card feature">
-          <h3>Wsparcie realizatora</h3>
-          <p>Pomoc w kadrach, dźwięku, prezentacjach i eksporcie materiałów.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== GALERIA ===== -->
-    <section class="section" id="galeria">
-      <span class="kicker">Zobacz przestrzeń</span>
-      <h2 class="h2">Galeria</h2>
-
-      <div class="card dropzone" id="dropzone" aria-label="Strefa dodawania zdjęć">
-        <p><strong>Przeciągnij i upuść</strong> zdjęcia tutaj lub
-          <label for="pick" style="text-decoration:underline; cursor:pointer">wybierz z dysku</label>.</p>
-        <input id="pick" type="file" accept="image/*" multiple class="sr-only" />
-        <p class="muted"><small>Zdjęcia są wyświetlane lokalnie (nie wysyłamy ich na serwer).</small></p>
-      </div>
-
-      <div class="gallery" id="gallery" style="margin-top:12px">
-        <!-- Możesz też wstawić na stałe poniższe obrazy (zastąp pliki swoimi) -->
-        <!--
-        <img class="span-6" src="gal1.jpg" alt="Strefa lounge — fotele i kanapy" />
-        <img class="span-6" src="gal2.jpg" alt="Plan zdjęciowy — green screen i kamery" />
-        <img class="span-6" src="gal3.jpg" alt="Szeroki plan studia — green screen" />
-        <img class="span-6" src="gal4.jpg" alt="Widok na reżyserkę i oświetlenie" />
-        -->
-      </div>
-    </section>
-
-    <!-- ===== CENNIK ===== -->
-    <section class="section" id="cennik">
-      <span class="kicker">Proste pakiety</span>
-      <h2 class="h2">Cennik</h2>
-      <div class="grid grid-3" style="margin-top:14px">
+  <!-- USŁUGI -->
+  <section id="uslugi" class="section">
+    <div class="container">
+      <h2>Jak możemy pomóc?</h2>
+      <div class="cards">
         <article class="card">
-          <h3>Start</h3>
-          <div class="price">399 zł / godz.</div>
-          <ul class="clean">
-            <li>✓ Studio i światło</li>
-            <li>✓ 1 operator</li>
-            <li>✓ Materiał surowy</li>
-          </ul>
-          <div style="height:10px"></div>
-          <a class="btn btn-primary" href="#kontakt">Rezerwuj</a>
+          <img src="/assets/srv1.webp" width="800" height="550" alt="Rezerwacje online — wybór terminu i specjalisty" loading="lazy" decoding="async">
+          <h3>Rezerwacje online</h3>
+          <p>Wybierz termin i specjalistę bez dzwonienia — potwierdzenie otrzymasz SMS-em i e-mailem.</p>
+          <a class="link" href="#kontakt">Czytaj więcej →</a>
         </article>
+
         <article class="card">
-          <h3>Standard</h3>
-          <div class="price">1499 zł / pół dnia</div>
-          <ul class="clean">
-            <li>✓ 2 kamery 4K</li>
-            <li>✓ Dźwięk + korekcja</li>
-            <li>✓ Mini‑montaż</li>
-          </ul>
-          <div style="height:10px"></div>
-          <a class="btn btn-primary" href="#kontakt">Rezerwuj</a>
+          <img src="/assets/srv2.webp" width="800" height="550" alt="Cennik usług medycznych" loading="lazy" decoding="async">
+          <h3>Cennik</h3>
+          <p>Przejrzyście, bez zaskoczeń. Płatność kartą, BLIK lub online. Zniżki pakietowe.</p>
+          <a class="link" href="#cennik">Czytaj więcej →</a>
         </article>
+
         <article class="card">
-          <h3>Pro</h3>
-          <div class="price">2799 zł / dzień</div>
-          <ul class="clean">
-            <li>✓ 3 kamery, reżyserka</li>
-            <li>✓ Operator + realizator dźwięku</li>
-            <li>✓ Pakiet post‑produkcji</li>
-          </ul>
-          <div style="height:10px"></div>
-          <a class="btn btn-primary" href="#kontakt">Zapytaj o termin</a>
+          <img src="/assets/srv3.webp" width="800" height="550" alt="Konsultacje online — szybka teleporada" loading="lazy" decoding="async">
+          <h3>Konsultacje online</h3>
+          <p>Teleporada i e-recepta bez wychodzenia z domu — wygodnie i bezpiecznie.</p>
+          <a class="link" href="#faq">Czytaj więcej →</a>
         </article>
       </div>
-      <p class="muted" style="margin-top:8px"><small>Ceny orientacyjne netto. Dostosujemy ofertę do Twojego formatu.</small></p>
-    </section>
-
-    <!-- ===== SPECYFIKACJA ===== -->
-    <section class="section" id="specyfikacja">
-      <span class="kicker">Parametry</span>
-      <h2 class="h2">Specyfikacja studia</h2>
-      <div class="card">
-        <table class="specs">
-          <tr><th>Powierzchnia</th><td>80 m²</td></tr>
-          <tr><th>Wysokość</th><td>4,5 m</td></tr>
-          <tr><th>Akustyka</th><td>Wygłuszenie akustyczne, niski RT60</td></tr>
-          <tr><th>Tła</th><td>Green screen / cyklorama</td></tr>
-          <tr><th>Prąd</th><td>xx kW / gniazda x 16A</td></tr>
-          <tr><th>Wyposażenie</th><td>Kamery 4K x2, lampy LED, mikrofony lav/shotgun</td></tr>
-          <tr><th>Udogodnienia</th><td>Vip room, make‑up, kuchnia, Wi‑Fi</td></tr>
-          <tr><th>Dojezdność</th><td>Parking / komunikacja miejska</td></tr>
-        </table>
-      </div>
-    </section>
-
-
-    <!-- ===== FAQ ===== -->
-    <section class="section" id="faq">
-      <span class="kicker">Pytania</span>
-      <h2 class="h2">FAQ</h2>
-      <details>
-        <summary>Jak zarezerwować termin?</summary>
-        <p>Najprościej przez formularz w kontakcie lub telefonicznie. Potwierdzamy e‑mailem.</p>
-      </details>
-      <details>
-        <summary>Czy mogę nagrać webinar na żywo?</summary>
-        <p>Tak — oferujemy streaming z grafikami i moderacją czatu.</p>
-      </details>
-      <details>
-        <summary>Czy zapewniacie montaż?</summary>
-        <p>W pakietach Standard/Pro wliczony jest podstawowy montaż. Zaawansowany montaż — wycena indywidualna.</p>
-      </details>
-    </section>
-
-    <!-- ===== KONTAKT ===== -->
-    <section class="section" id="kontakt">
-      <span class="kicker">Skontaktuj się</span>
-      <h2 class="h2">Rezerwacje i zapytania</h2>
-
-      <div class="contact-grid">
-        <div class="card">
-          <form action="mailto:kontakt@twojadomena.pl" method="post" enctype="text/plain">
-            <div class="field">
-              <label for="name">Imię i nazwisko</label>
-              <input id="name" name="name" required>
-            </div>
-            <div class="field">
-              <label for="email">E‑mail</label>
-              <input id="email" name="email" type="email" required>
-            </div>
-            <div class="field">
-              <label for="msg">Wiadomość</label>
-              <textarea id="msg" name="message" placeholder="Opisz krótko plan nagrania"></textarea>
-            </div>
-            <div style="height:10px"></div>
-            <button class="btn btn-primary" type="submit">Wyślij</button>
-            <a class="btn btn-ghost" href="tel:+48600000000">Zadzwoń</a>
-          </form>
-        </div>
-        <div class="card" id="mapa">
-          <h3>Tu nas znajdziesz</h3>
-          <p>Adres ul Kasprzaka 6, budynek E 01-211 Warszawa . Godziny otwarcia: pn‑pt 9:00–18:00.</p>
-          <iframe title="Mapa" style="width:100%; height:260px; border:0; border-radius:12px" loading="lazy" allowfullscreen src="https://www.openstreetmap.org/export/embed.html?bbox=21.0%2C52.0%2C21.2%2C52.1&layer=mapnik"></iframe>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer style="border-top:1px solid var(--border); padding:18px 22px; color:#b8c7ea">
-    <div style="max-width:var(--maxw); margin:0 auto; display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap">
-      <small>© <span id="year"></span>. Wszystkie prawa zastrzeżone.</small>
-      <small>Kolor akcentu: #8075ed • Host: GitHub Pages</small>
     </div>
-  </footer>
+  </section>
 
-  <div class="wa">
-    <a href="https://wa.me/48600000000" target="_blank" rel="noopener" aria-label="Napisz na WhatsApp">🟢</a>
-  </div>
+  <!-- ZAUFALI NAM -->
+  <section aria-label="Zaufali nam" class="section">
+    <div class="container">
+      <h2 class="sr-only" style="position:absolute; left:-9999px; top:auto">Zaufali nam</h2>
+      <ul class="logo-strip">
+        <li><img src="/assets/logo1.svg" width="160" height="40" alt="Partner 1" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo2.svg" width="160" height="40" alt="Partner 2" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo3.svg" width="160" height="40" alt="Partner 3" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo4.svg" width="160" height="40" alt="Partner 4" loading="lazy" decoding="async"></li>
+        <li><img src="/assets/logo5.svg" width="160" height="40" alt="Partner 5" loading="lazy" decoding="async"></li>
+      </ul>
+    </div>
+  </section>
 
-  <script>
-    // Rok w stopce
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Smooth scroll dla linków zaczynających się od #
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1){
-          e.preventDefault();
-          document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
-          // zamknij szufladę na mobile
-          drawer.classList.remove('open');
-        }
-      });
-    });
-
-    // Mobile drawer
-    const burger=document.getElementById('burger');
-    const drawer=document.getElementById('drawer');
-    burger?.addEventListener('click',()=>drawer.classList.toggle('open'));
-
-    // ===== GALERIA: dodawanie zdjęć (drag&drop + wybór z dysku) =====
-    const dropzone = document.getElementById('dropzone');
-    const pick = document.getElementById('pick');
-    const gallery = document.getElementById('gallery');
-
-    const stop = e => { e.preventDefault(); e.stopPropagation(); };
-    ['dragenter','dragover','dragleave','drop'].forEach(evt => {
-      dropzone.addEventListener(evt, stop, false);
-    });
-    ['dragenter','dragover'].forEach(evt => {
-      dropzone.addEventListener(evt, ()=>dropzone.classList.add('dragover'));
-    });
-    ['dragleave','drop'].forEach(evt => {
-      dropzone.addEventListener(evt, ()=>dropzone.classList.remove('dragover'));
-    });
-
-    dropzone.addEventListener('drop', (e)=>{
-      handleFiles(e.dataTransfer.files);
-    });
-    pick.addEventListener('change', (e)=>{
-      handleFiles(e.target.files);
-    });
-
-    function handleFiles(fileList){
-      const files = Array.from(fileList).filter(f=>/^image\//.test(f.type));
-      if(!files.length) return;
-      files.forEach(file=>{
-        const reader = new FileReader();
-        reader.onload = ev => addThumb(ev.target.result, file.name);
-        reader.readAsDataURL(file);
-      });
-    }
-
-    function addThumb(src, alt){
-      const wrap = document.createElement('div');
-      wrap.className = 'thumb span-6';
-      const img = document.createElement('img');
-      img.src = src; img.alt = alt || 'Zdjęcie w galerii';
-      const del = document.createElement('button');
-      del.type = 'button'; del.innerText = 'Usuń';
-      del.addEventListener('click', ()=> wrap.remove());
-      wrap.appendChild(img); wrap.appendChild(del);
-      gallery.appendChild(wrap);
-    }
-  </script>
-</body>
-</html>
+  <!-- CENNIK -->
+  <section id="cennik" class="section">
+    <div class="container">
+      <h2>Cennik</h2>
+      <div class="
