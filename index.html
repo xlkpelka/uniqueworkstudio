@@ -1,164 +1,168 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-/* styl klasy */
-.w3-sidebar{  width: 120px;
-  color:#222;
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-</head>
-<body class="hero-bg">
-.hero-bg{
-  color:#222;
-  background:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("tło 1.jpg") center/cover no-repeat;
-}
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-black">
-  <!-- Avatar image in top left corner -->
-  <img src="logo.png" style="width:100%">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
-    <p>O NAS</p>
-  </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>OFERTA</p>
-  </a>
-  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-eye w3-xxlarge"></i>
-    <p>ZDJĘCIA</p>
-  </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>KONTAKT</p>
-  </a>
-</nav>
+root@f0acae3f5e38:/workspace/uniqueworkstudio# nl -ba index.html | sed -n '1,160p'
+     1  <!DOCTYPE html>
+     2  <html>
+     3  <head>
+     4  <title>W3.CSS Template</title>
+     5  <meta charset="UTF-8">
+     6  <meta name="viewport" content="width=device-width, initial-scale=1">
+     7  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+     8  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+     9  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    10  <style>
+    11  body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    12  .w3-row-padding img {margin-bottom: 12px}
+    13  /* Set the width of the sidebar to 120px */
+    14  /* styl klasy */
+    15  .w3-sidebar{
+    16    width: 120px;
+    17    color: #fff;
+    18    background-color: #000;
+    19  }
+    20  /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    21  #main {margin-left: 120px}
+    22  /* Remove margins from "page content" on small screens */
+    23  @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    24
+    25  .hero-bg {
+    26    color: #222;
+    27    background:
+    28      linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    29      url("tło 1.jpg") center/cover no-repeat;
+    30  }
+    31
+    32  .hero {
+    33    color: #fff;
+    34    background:
+    35      linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    36      url("tło 1.jpg") center/cover no-repeat;
+    37    min-height: 60vh;
+    38    display: grid;
+    39    place-items: center;
+    40    text-align: center;
+    41  }
+    42  </style>
+    43  </head>
+    44  <body class="hero-bg">
+    45  <!-- Icon Bar (Sidebar - hidden on small screens) -->
+    46  <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-black">
+    47    <!-- Avatar image in top left corner -->
+    48    <img src="logo.png" style="width:100%">
+    49    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    50      <i class="fa fa-home w3-xxlarge"></i>
+    51      <p>O NAS</p>
+    52    </a>
+    53    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    54      <i class="fa fa-user w3-xxlarge"></i>
+    55      <p>OFERTA</p>
+    56    </a>
+    57    <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    58      <i class="fa fa-eye w3-xxlarge"></i>
+    59      <p>ZDJĘCIA</p>
+    60    </a>
+    61    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    62      <i class="fa fa-envelope w3-xxlarge"></i>
+    63      <p>KONTAKT</p>
+    64    </a>
+    65  </nav>
+    66
+    67  <!-- Navbar on small screens (Hidden on medium and large screens) -->
+    68  <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    69    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    70      <a href="#" class="w3-bar-item w3-button" style="width:25% !important">O NAS</a>
+    71      <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">OFERTA</a>
+    72      <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">ZDJĘCIA</a>
+    73      <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">KONTAKT</a>
+    74    </div>
+    75  </div>
+    76
+    77  <!-- Page Content -->
+    78  <div class="w3-padding-large" id="main">
+    79    <!-- Header/Home -->
+    80    <header class="w3-container w3-padding-32 w3-center hero" id="home">
+    81      <h1 class="w3-jumbo"><span class="w3-hide-small">This is</span> Unique Work Studio.</h1>
+    82      <p>nagrania.emisje.montaż.</p>
+    83      <img src="hero.jpg" alt="green screen" class="w3-image" width="992" height="1108">
+    84    </header>
+    85
+    86    <!-- About Section -->
+    87    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    88      <h2 class="w3-text-light-grey">O NAS</h2>
+    89      <hr style="width:200px" class="w3-opacity">
+    90      <p>Nasze studio to nie tylko miejsce, to prawdziwa fabryka marzeń! Zastosowanie technologii green screen w połączeni
+u z precyzyjnym oświetleniem sprawia, że każda produkcja staje się dziełem sztuki. Mamy wszystko, co potrzebne, aby Twoje wizje
+stały się rzeczywistością.
+    91
+    92      </p>
+    93      <h3 class="w3-padding-16 w3-text-light-grey">OFERTA</h3>
+    94      <p class="w3-wide">nagrania i emisje</p>
+    95      <div class="w3-white">
+    96        <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+    97      </div>
+    98      <p class="w3-wide">montaż</p>
+    99      <div class="w3-white">
+   100        <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+   101      </div>
+   102      <p class="w3-wide">consulting</p>
+   103      <div class="w3-white">
+   104        <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+   105      </div><br>
+   106
+   107      <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+   108        <div class="w3-quarter w3-section">
+   109          <span class="w3-xlarge">85+</span><br>
+   110          Klientów
+   111        </div>
+   112        <div class="w3-quarter w3-section">
+   113          <span class="w3-xlarge">200+</span><br>
+   114          Zrealizowanych projektów
+   115        </div>
+   116        <div class="w3-quarter w3-section">
+   117          <span class="w3-xlarge">300+</span><br>
+   118          Webinarów
+   119        </div>
+   120        <div class="w3-quarter w3-section">
+   121          <span class="w3-xlarge">170+</span><br>
+   122          Podcastów
+   123        </div>
+   124      </div>
+   125
+   126
+   127      <!-- Grid for pricing tables -->
+   128      <h3 class="w3-padding-16 w3-text-light-grey">Cennik</h3>
+   129      <div class="w3-row-padding" style="margin:0 -16px">
+   130        <div class="w3-half w3-margin-bottom">
+   131          <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+   132            <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+   133            <li class="w3-padding-16">2 kamery 4K </li>
+   134            <li class="w3-padding-16">Photography</li>
+   135            <li class="w3-padding-16">5GB Storage</li>
+   136            <li class="w3-padding-16">Mail Support</li>
+   137            <li class="w3-padding-16">
+   138              <h2>390 zł/1h</h2>
+   139              <span class="w3-opacity">za cały dzień</span>
+   140            </li>
+   141            <li class="w3-light-grey w3-padding-24">
+   142              <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+   143            </li>
+   144          </ul>
+   145        </div>
+   146
+   147        <div class="w3-half">
+   148          <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+   149            <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
+   150            <li class="w3-padding-16">Web Design</li>
+   151            <li class="w3-padding-16">Photography</li>
+   152            <li class="w3-padding-16">50GB Storage</li>
+   153            <li class="w3-padding-16">Endless Support</li>
+   154            <li class="w3-padding-16">
+   155              <h2>$ 25</h2>
+   156              <span class="w3-opacity">per month</span>
+   157            </li>
+   158            <li class="w3-light-grey w3-padding-24">
+   159              <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+   160            </li>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">O NAS</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">OFERTA</a>
-    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">ZDJĘCIA</a>
-    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">KONTAKT</a>
-  </div>
-</div>
-
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center /* tło zdjęciowe + przyciemnienie dla czytelności tekstu */
-.hero{
-  color:#000; /* jasny tekst, bo tło ciemne */
-  background:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("tło 1.jpg") center/cover no-repeat;
-  /* opcjonalnie wysokość hero: */
-  min-height: 60vh;           /* ~60% wysokości ekranu */
-  display: grid; place-items: center; /* ładne wyśrodkowanie */
-  text-align: center;
-}
-" id="home">
-    <h1 class="w3-jumbo"><span class="w3-hide-small">This is</span> Unique Work Studio.</h1>
-    <p>nagrania.emisje.montaż.</p>
-    <img src="hero.jpg" alt="green screen" class="w3-image" width="992" height="1108">
-  </header>
-
-  <!-- About Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">O NAS</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <p>Nasze studio to nie tylko miejsce, to prawdziwa fabryka marzeń! Zastosowanie technologii green screen w połączeniu z precyzyjnym oświetleniem sprawia, że każda produkcja staje się dziełem sztuki. Mamy wszystko, co potrzebne, aby Twoje wizje stały się rzeczywistością.
-
-    </p>
-    <h3 class="w3-padding-16 w3-text-light-grey">OFERTA</h3>
-    <p class="w3-wide">nagrania i emisje</p>
-    <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
-    </div>
-    <p class="w3-wide">montaż</p>
-    <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
-    </div>
-    <p class="w3-wide">consulting</p>
-    <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
-    </div><br>
-    
-    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">85+</span><br>
-        Klientów
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">200+</span><br>
-        Zrealizowanych projektów
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">300+</span><br>
-        Webinarów
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">170+</span><br>
-        Podcastów
-      </div>
-    </div>
-
-    
-    <!-- Grid for pricing tables -->
-    <h3 class="w3-padding-16 w3-text-light-grey">Cennik</h3>
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half w3-margin-bottom">
-        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-          <li class="w3-padding-16">2 kamery 4K </li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">5GB Storage</li>
-          <li class="w3-padding-16">Mail Support</li>
-          <li class="w3-padding-16">
-            <h2>390 zł/1h</h2>
-            <span class="w3-opacity">za cały dzień</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-
-      <div class="w3-half">
-        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">50GB Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 25</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-    <!-- End Grid/Pricing tables -->
-    </div>
-    
+I'll focus on instructions and formatting for explaining changes made to the files.
     <!-- Testimonials -->
     <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>  
     <img src="/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
