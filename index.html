@@ -1,230 +1,835 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<style>
-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
-.w3-half img:hover{opacity:1}
-</style>
-</head>
-<body>
-
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
-  <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
-  </div>
-  <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">O NAS</a> 
-    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">ZDJĘCIA</a> 
-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CO ROBIMY</a> 
-    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
-    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CENNIK</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">KONTAKT</a>
-  </div>
-</nav>
-
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
-  <span>Company Name</span>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
-
-  <!-- Header -->
-  <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Unique Work STUDIO</b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>NAGRANIA.EMISJE.POSTPRODUKCJA.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-  </div>
-  
-  <!-- Photo grid (modal) -->
-  <div class="w3-row-padding">
-    <div class="w3-half">
-      <img src="/gal3.jpg" style="width:100%" onclick="onClick(this)" alt="studio vip room">
-      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="studio nagrań,greenscreen">
-      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="cyklorama,kamery 4K">
-    </div>
-
-    <div class="w3-half">
-      <img src="/gal4.jpg" style="width:100%" onclick="onClick(this)" alt="Windows for the atrium">
-      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="Bedroom and office in one space">
-      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="Scandinavian design">
-    </div>
-  </div>
-
-  <!-- Modal for full size images on click-->
-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
-      <p id="caption"></p>
-    </div>
-  </div>
-
-  <!-- Services -->
-  <div class="w3-container" id="services" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Services.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>We are a interior design service that focus on what's best for your home and what's best for you!</p>
-    <p>Some text about our services - what we do and what we offer. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-  </div>
-  
-  <!-- Designers -->
-  <div class="w3-container" id="designers" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>The best team in the world.</p>
-    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-    <p><b>Our designers are thoughtfully chosen</b>:</p>
-  </div>
-
-  <!-- The Team -->
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>John Doe</h3>
-          <p class="w3-opacity">CEO & Founder</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
-        <div class="w3-container">
-          <h3>Jane Doe</h3>
-          <p class="w3-opacity">Designer</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col m4 w3-margin-bottom">
-      <div class="w3-light-grey">
-        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
-        <div class="w3-container">
-          <h3>Mike Ross</h3>
-          <p class="w3-opacity">Architect</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Packages / Pricing Tables -->
-  <div class="w3-container" id="packages" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Packages.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>
-
-  <div class="w3-row-padding">
-    <div class="w3-half w3-margin-bottom">
-      <ul class="w3-ul w3-light-grey w3-center">
-        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-        <li class="w3-padding-16">2 kamery</li>
-        <li class="w3-padding-16"></li>
-        <li class="w3-padding-16"></li>
-        <li class="w3-padding-16">20% furniture discount</li>
-        <li class="w3-padding-16">Good deals</li>
-        <li class="w3-padding-16">
-          <h2>$ 199</h2>
-          <span class="w3-opacity">per room</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-        </li>
-      </ul>
-    </div>
-        
-    <div class="w3-half">
-      <ul class="w3-ul w3-light-grey w3-center">
-        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
-        <li class="w3-padding-16">Floorplanning</li>
-        <li class="w3-padding-16">50 hours support</li>
-        <li class="w3-padding-16">Photography</li>
-        <li class="w3-padding-16">50% furniture discount</li>
-        <li class="w3-padding-16">GREAT deals</li>
-        <li class="w3-padding-16">
-          <h2>$ 249</h2>
-          <span class="w3-opacity">per room</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <!-- Contact -->
-  <div class="w3-container" id="contact" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
-    <form action="/action_page.php" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
-      </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
-    </form>  
-  </div>
-
-<!-- End page content -->
-</div>
-
-<!-- W3.CSS Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
-
-<script>
-// Script to open and close sidebar
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 2b8dbeb6b7f72d50c43f5adaf79d5dbec82e5cd6..a9c7cac2a4fcda48a01ff464b76db8d256e99370 100644
+--- a/index.html
++++ b/index.html
+@@ -1,230 +1,616 @@
+ <!DOCTYPE html>
+-<html lang="en">
++<html lang="pl">
+ <head>
+-<title>W3.CSS Template</title>
+-<meta charset="UTF-8">
+-<meta name="viewport" content="width=device-width, initial-scale=1">
+-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+-<style>
+-body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+-body {font-size:16px;}
+-.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+-.w3-half img:hover{opacity:1}
+-</style>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Unique Work Studio – Wynajem studia foto & wideo</title>
++  <link rel="preconnect" href="https://fonts.googleapis.com">
++  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
++  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
++  <style>
++    :root {
++      --bg-dark: #0f1014;
++      --bg-muted: #181b22;
++      --accent: #ff3b3f;
++      --text-light: #f6f6f8;
++      --text-muted: #b8bcc6;
++    }
++
++    * {
++      box-sizing: border-box;
++    }
++
++    body {
++      margin: 0;
++      font-family: 'Poppins', sans-serif;
++      background: var(--bg-dark);
++      color: var(--text-light);
++      line-height: 1.6;
++    }
++
++    img {
++      max-width: 100%;
++      display: block;
++    }
++
++    a {
++      color: inherit;
++      text-decoration: none;
++    }
++
++    header {
++      min-height: 100vh;
++      background: linear-gradient(160deg, rgba(15,16,20,0.9) 0%, rgba(15,16,20,0.6) 50%, rgba(15,16,20,0.4) 100%), url('hero.jpg') center/cover no-repeat;
++      display: flex;
++      flex-direction: column;
++    }
++
++    .topbar {
++      display: flex;
++      align-items: center;
++      justify-content: space-between;
++      padding: 24px 5vw;
++    }
++
++    .logo {
++      display: flex;
++      align-items: center;
++      gap: 12px;
++      font-weight: 600;
++      letter-spacing: 0.08em;
++      text-transform: uppercase;
++    }
++
++    .logo img {
++      width: 48px;
++      height: 48px;
++      border-radius: 12px;
++      object-fit: cover;
++      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
++    }
++
++    nav ul {
++      list-style: none;
++      display: flex;
++      gap: 28px;
++      margin: 0;
++      padding: 0;
++      font-size: 0.95rem;
++    }
++
++    nav a {
++      position: relative;
++      padding-bottom: 6px;
++    }
++
++    nav a::after {
++      content: '';
++      position: absolute;
++      left: 0;
++      bottom: 0;
++      width: 0;
++      height: 2px;
++      background: var(--accent);
++      transition: width 0.3s ease;
++    }
++
++    nav a:hover::after,
++    nav a:focus-visible::after {
++      width: 100%;
++    }
++
++    .hero {
++      flex: 1;
++      display: grid;
++      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
++      gap: 48px;
++      align-items: center;
++      padding: 60px 5vw 80px;
++    }
++
++    .hero h1 {
++      font-size: clamp(2.6rem, 4vw, 4rem);
++      margin-bottom: 16px;
++      letter-spacing: 0.04em;
++    }
++
++    .hero p {
++      margin-bottom: 32px;
++      color: var(--text-muted);
++      max-width: 520px;
++    }
++
++    .tagline {
++      display: inline-flex;
++      align-items: center;
++      gap: 10px;
++      padding: 10px 18px;
++      border-radius: 999px;
++      background: rgba(255, 59, 63, 0.12);
++      color: var(--accent);
++      font-weight: 500;
++      margin-bottom: 20px;
++    }
++
++    .buttons {
++      display: flex;
++      flex-wrap: wrap;
++      gap: 16px;
++    }
++
++    .btn {
++      display: inline-flex;
++      align-items: center;
++      justify-content: center;
++      padding: 14px 28px;
++      border-radius: 32px;
++      font-weight: 600;
++      letter-spacing: 0.02em;
++      transition: transform 0.2s ease, box-shadow 0.2s ease;
++      cursor: pointer;
++      border: none;
++    }
++
++    .btn-primary {
++      background: var(--accent);
++      color: #fff;
++      box-shadow: 0 12px 30px rgba(255, 59, 63, 0.4);
++    }
++
++    .btn-outline {
++      background: transparent;
++      color: var(--text-light);
++      border: 1px solid rgba(255,255,255,0.2);
++    }
++
++    .btn:hover {
++      transform: translateY(-2px);
++      box-shadow: 0 16px 32px rgba(0,0,0,0.35);
++    }
++
++    .hero-card {
++      background: rgba(24, 27, 34, 0.7);
++      border: 1px solid rgba(255, 255, 255, 0.06);
++      border-radius: 32px;
++      padding: 40px;
++      backdrop-filter: blur(8px);
++      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
++    }
++
++    .hero-card h3 {
++      margin-top: 0;
++      font-size: 1.2rem;
++      text-transform: uppercase;
++      letter-spacing: 0.08em;
++      color: var(--text-muted);
++    }
++
++    .hero-card ul {
++      list-style: none;
++      padding: 0;
++      margin: 24px 0 0;
++      display: grid;
++      gap: 16px;
++    }
++
++    .hero-card li {
++      display: flex;
++      gap: 12px;
++      align-items: flex-start;
++    }
++
++    .hero-card li span {
++      width: 10px;
++      height: 10px;
++      border-radius: 50%;
++      background: var(--accent);
++      margin-top: 7px;
++      flex-shrink: 0;
++    }
++
++    .section {
++      padding: 100px 5vw;
++    }
++
++    .section-header {
++      max-width: 720px;
++      margin-bottom: 60px;
++    }
++
++    .section-header h2 {
++      font-size: clamp(2rem, 3vw, 3rem);
++      margin-bottom: 12px;
++    }
++
++    .section-header p {
++      color: var(--text-muted);
++    }
++
++    .features {
++      display: grid;
++      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
++      gap: 32px;
++    }
++
++    .feature {
++      background: var(--bg-muted);
++      border-radius: 24px;
++      padding: 32px;
++      border: 1px solid rgba(255,255,255,0.05);
++      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
++    }
++
++    .feature h3 {
++      margin-top: 0;
++      margin-bottom: 12px;
++    }
++
++    .feature p {
++      color: var(--text-muted);
++      margin: 0;
++    }
++
++    .gallery {
++      display: grid;
++      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
++      gap: 18px;
++    }
++
++    .gallery img {
++      height: 220px;
++      object-fit: cover;
++      border-radius: 20px;
++      transition: transform 0.3s ease;
++      border: 1px solid rgba(255,255,255,0.04);
++    }
++
++    .gallery img:hover {
++      transform: scale(1.03);
++    }
++
++    .pricing-grid {
++      display: grid;
++      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
++      gap: 36px;
++    }
++
++    .pricing-card {
++      background: var(--bg-muted);
++      border-radius: 28px;
++      padding: 36px;
++      border: 1px solid rgba(255,255,255,0.08);
++      position: relative;
++      overflow: hidden;
++      box-shadow: 0 24px 50px rgba(0,0,0,0.28);
++    }
++
++    .pricing-card.highlight::before {
++      content: 'Najczęściej wybierane';
++      position: absolute;
++      top: 24px;
++      right: -60px;
++      background: var(--accent);
++      color: #fff;
++      font-size: 0.75rem;
++      letter-spacing: 0.1em;
++      text-transform: uppercase;
++      padding: 6px 72px;
++      transform: rotate(45deg);
++    }
++
++    .pricing-card h3 {
++      margin: 0 0 12px;
++    }
++
++    .price {
++      font-size: 2.2rem;
++      font-weight: 600;
++      margin-bottom: 8px;
++    }
++
++    .pricing-card ul {
++      list-style: none;
++      padding: 0;
++      margin: 24px 0 32px;
++      display: grid;
++      gap: 12px;
++      color: var(--text-muted);
++    }
++
++    .pricing-card ul li::before {
++      content: '\2713';
++      color: var(--accent);
++      margin-right: 10px;
++    }
++
++    .contact {
++      display: grid;
++      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
++      gap: 48px;
++      background: linear-gradient(135deg, rgba(24,27,34,0.95), rgba(24,27,34,0.75));
++      border-radius: 36px;
++      padding: 48px;
++      border: 1px solid rgba(255,255,255,0.05);
++      box-shadow: 0 26px 46px rgba(0,0,0,0.3);
++    }
++
++    .contact-info ul {
++      list-style: none;
++      padding: 0;
++      margin: 32px 0 0;
++      display: grid;
++      gap: 16px;
++    }
++
++    .contact-info li {
++      display: flex;
++      gap: 14px;
++      align-items: center;
++      color: var(--text-muted);
++    }
++
++    .contact-info li span {
++      width: 12px;
++      height: 12px;
++      border-radius: 50%;
++      background: var(--accent);
++      flex-shrink: 0;
++    }
++
++    form {
++      display: grid;
++      gap: 16px;
++    }
++
++    label {
++      font-weight: 500;
++    }
++
++    input, textarea {
++      width: 100%;
++      padding: 14px 18px;
++      border-radius: 16px;
++      border: 1px solid rgba(255,255,255,0.08);
++      background: rgba(15,16,20,0.6);
++      color: var(--text-light);
++      font-family: inherit;
++      font-size: 1rem;
++      resize: vertical;
++    }
++
++    input:focus, textarea:focus {
++      outline: 2px solid rgba(255,59,63,0.4);
++    }
++
++    footer {
++      padding: 36px 5vw 48px;
++      background: #090a0d;
++      text-align: center;
++      color: var(--text-muted);
++      font-size: 0.9rem;
++    }
++
++    .footer-links {
++      display: flex;
++      justify-content: center;
++      gap: 24px;
++      margin-bottom: 12px;
++    }
++
++    @media (max-width: 960px) {
++      nav ul {
++        gap: 18px;
++        font-size: 0.85rem;
++      }
++    }
++
++    @media (max-width: 768px) {
++      header {
++        min-height: auto;
++      }
++
++      .topbar {
++        flex-direction: column;
++        gap: 18px;
++        text-align: center;
++      }
++
++      nav ul {
++        flex-wrap: wrap;
++        justify-content: center;
++      }
++
++      .hero-card {
++        padding: 32px;
++      }
++    }
++
++    @media (max-width: 520px) {
++      .section {
++        padding: 72px 7vw;
++      }
++
++      .contact {
++        padding: 36px 28px;
++      }
++
++      .pricing-card.highlight::before {
++        display: none;
++      }
++    }
++  </style>
+ </head>
+ <body>
+-
+-<!-- Sidebar/menu -->
+-<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+-  <div class="w3-container">
+-    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
+-  </div>
+-  <div class="w3-bar-block">
+-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">O NAS</a> 
+-    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">ZDJĘCIA</a> 
+-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CO ROBIMY</a> 
+-    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
+-    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CENNIK</a> 
+-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">KONTAKT</a>
+-  </div>
+-</nav>
+-
+-<!-- Top menu on small screens -->
+-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+-  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+-  <span>Company Name</span>
+-</header>
+-
+-<!-- Overlay effect when opening sidebar on small screens -->
+-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+-
+-<!-- !PAGE CONTENT! -->
+-<div class="w3-main" style="margin-left:340px;margin-right:40px">
+-
+-  <!-- Header -->
+-  <div class="w3-container" style="margin-top:80px" id="showcase">
+-    <h1 class="w3-jumbo"><b>Unique Work STUDIO</b></h1>
+-    <h1 class="w3-xxxlarge w3-text-red"><b>NAGRANIA.EMISJE.POSTPRODUKCJA.</b></h1>
+-    <hr style="width:50px;border:5px solid red" class="w3-round">
+-  </div>
+-  
+-  <!-- Photo grid (modal) -->
+-  <div class="w3-row-padding">
+-    <div class="w3-half">
+-      <img src="/gal3.jpg" style="width:100%" onclick="onClick(this)" alt="studio vip room">
+-      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="studio nagrań,greenscreen">
+-      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="cyklorama,kamery 4K">
++  <header id="start">
++    <div class="topbar">
++      <div class="logo">
++        <img src="logo.png" alt="Logo Unique Work Studio">
++        <span>Unique Work Studio</span>
++      </div>
++      <nav>
++        <ul>
++          <li><a href="#start">Start</a></li>
++          <li><a href="#oferta">Oferta</a></li>
++          <li><a href="#przestrzen">Przestrzeń</a></li>
++          <li><a href="#cennik">Cennik</a></li>
++          <li><a href="#kontakt">Kontakt</a></li>
++        </ul>
++      </nav>
+     </div>
  
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-</script>
-
-</body>
-</html>
-
-
+-    <div class="w3-half">
+-      <img src="/gal4.jpg" style="width:100%" onclick="onClick(this)" alt="Windows for the atrium">
+-      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="Bedroom and office in one space">
+-      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="Scandinavian design">
+-    </div>
+-  </div>
+-
+-  <!-- Modal for full size images on click-->
+-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+-    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+-      <img id="img01" class="w3-image">
+-      <p id="caption"></p>
+-    </div>
+-  </div>
+-
+-  <!-- Services -->
+-  <div class="w3-container" id="services" style="margin-top:75px">
+-    <h1 class="w3-xxxlarge w3-text-red"><b>Services.</b></h1>
+-    <hr style="width:50px;border:5px solid red" class="w3-round">
+-    <p>We are a interior design service that focus on what's best for your home and what's best for you!</p>
+-    <p>Some text about our services - what we do and what we offer. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+-    </p>
+-  </div>
+-  
+-  <!-- Designers -->
+-  <div class="w3-container" id="designers" style="margin-top:75px">
+-    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
+-    <hr style="width:50px;border:5px solid red" class="w3-round">
+-    <p>The best team in the world.</p>
+-    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+-    </p>
+-    <p><b>Our designers are thoughtfully chosen</b>:</p>
+-  </div>
+-
+-  <!-- The Team -->
+-  <div class="w3-row-padding w3-grayscale">
+-    <div class="w3-col m4 w3-margin-bottom">
+-      <div class="w3-light-grey">
+-        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+-        <div class="w3-container">
+-          <h3>John Doe</h3>
+-          <p class="w3-opacity">CEO & Founder</p>
+-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
++    <div class="hero">
++      <div>
++        <div class="tagline">Studio foto & wideo w centrum miasta</div>
++        <h1>Wielofunkcyjna przestrzeń do nagrań, transmisji i eventów online</h1>
++        <p>
++          Unique Work Studio to gotowe do pracy studio nagraniowe z greenscreenem, cykloramą oraz zapleczem technicznym. Idealne dla ekip foto/video, webinarów na żywo, podcastów oraz produkcji hybrydowych.
++        </p>
++        <div class="buttons">
++          <a class="btn btn-primary" href="#kontakt">Zarezerwuj termin</a>
++          <a class="btn btn-outline" href="#przestrzen">Poznaj przestrzeń</a>
+         </div>
+       </div>
+-    </div>
+-    <div class="w3-col m4 w3-margin-bottom">
+-      <div class="w3-light-grey">
+-        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+-        <div class="w3-container">
+-          <h3>Jane Doe</h3>
+-          <p class="w3-opacity">Designer</p>
+-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+-        </div>
++      <div class="hero-card">
++        <h3>Dlaczego warto?</h3>
++        <ul>
++          <li><span></span><strong>Cyklorama 6×4 m</strong> z przygotowanym systemem oświetlenia LED.</li>
++          <li><span></span><strong>Strefa VIP &amp; make-up</strong> dla komfortu gości i prowadzących.</li>
++          <li><span></span><strong>Streaming 4K</strong> z obsługą realizatora oraz sprzętem audio.</li>
++          <li><span></span><strong>Elastyczne godziny</strong> i wsparcie zespołu technicznego na miejscu.</li>
++        </ul>
+       </div>
+     </div>
+-    <div class="w3-col m4 w3-margin-bottom">
+-      <div class="w3-light-grey">
+-        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
+-        <div class="w3-container">
+-          <h3>Mike Ross</h3>
+-          <p class="w3-opacity">Architect</p>
+-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+-        </div>
++  </header>
++
++  <section class="section" id="oferta">
++    <div class="section-header">
++      <h2>Oferta szyta na miarę Twojej produkcji</h2>
++      <p>Od kameralnych nagrań po realizacje live. Zapewniamy profesjonalne zaplecze sprzętowe, scenografię oraz doświadczony zespół realizatorów.</p>
++    </div>
++    <div class="features">
++      <div class="feature">
++        <h3>Studio foto &amp; video</h3>
++        <p>Przestrzeń o wysokości 4,5 m z cykloramą, greenscreenem i kontrolą światła. Idealne warunki do sesji produktowych, reklamowych i korporacyjnych.</p>
++      </div>
++      <div class="feature">
++        <h3>Produkcje live</h3>
++        <p>W pełni wyposażone stanowisko realizatora, miksery wideo i audio, system kamer 4K oraz stabilne łącze światłowodowe do streamingu.</p>
++      </div>
++      <div class="feature">
++        <h3>Podcasty &amp; webinary</h3>
++        <p>Wygłuszona strefa audio, mikrofony pojemnościowe, odsłuch na słuchawkach i tła scenograficzne, które można szybko dopasować do marki.</p>
++      </div>
++      <div class="feature">
++        <h3>Obsługa kreatywna</h3>
++        <p>Konsultacje produkcyjne, wsparcie scenariuszowe, montaż i postprodukcja. Pomagamy przejść przez cały proces – od pomysłu po publikację.</p>
+       </div>
+     </div>
+-  </div>
+-
+-  <!-- Packages / Pricing Tables -->
+-  <div class="w3-container" id="packages" style="margin-top:75px">
+-    <h1 class="w3-xxxlarge w3-text-red"><b>Packages.</b></h1>
+-    <hr style="width:50px;border:5px solid red" class="w3-round">
+-    <p>
+-
+-  <div class="w3-row-padding">
+-    <div class="w3-half w3-margin-bottom">
+-      <ul class="w3-ul w3-light-grey w3-center">
+-        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+-        <li class="w3-padding-16">2 kamery</li>
+-        <li class="w3-padding-16"></li>
+-        <li class="w3-padding-16"></li>
+-        <li class="w3-padding-16">20% furniture discount</li>
+-        <li class="w3-padding-16">Good deals</li>
+-        <li class="w3-padding-16">
+-          <h2>$ 199</h2>
+-          <span class="w3-opacity">per room</span>
+-        </li>
+-        <li class="w3-light-grey w3-padding-24">
+-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+-        </li>
+-      </ul>
++  </section>
++
++  <section class="section" id="przestrzen">
++    <div class="section-header">
++      <h2>Przestrzeń, która inspiruje</h2>
++      <p>Przemyślany układ studia zapewnia płynny przepływ pracy: od przygotowania gości, przez plan zdjęciowy, aż po komfortowy backstage.</p>
++    </div>
++    <div class="gallery">
++      <img src="gal1.jpg" alt="Plan zdjęciowy z cykloramą i systemem oświetlenia">
++      <img src="gal2.jpg" alt="Strefa nagrań wideo z greenscreenem">
++      <img src="gal3.jpg" alt="Salon VIP oraz przestrzeń networkingowa">
++      <img src="gal4.jpg" alt="Profesjonalne stanowisko realizatora transmisji">
+     </div>
+-        
+-    <div class="w3-half">
+-      <ul class="w3-ul w3-light-grey w3-center">
+-        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
+-        <li class="w3-padding-16">Floorplanning</li>
+-        <li class="w3-padding-16">50 hours support</li>
+-        <li class="w3-padding-16">Photography</li>
+-        <li class="w3-padding-16">50% furniture discount</li>
+-        <li class="w3-padding-16">GREAT deals</li>
+-        <li class="w3-padding-16">
+-          <h2>$ 249</h2>
+-          <span class="w3-opacity">per room</span>
+-        </li>
+-        <li class="w3-light-grey w3-padding-24">
+-          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
+-        </li>
+-      </ul>
++  </section>
++
++  <section class="section" id="cennik">
++    <div class="section-header">
++      <h2>Elastyczny cennik wynajmu</h2>
++      <p>Wybierz pakiet dopasowany do Twojego projektu. Ceny obejmują wsparcie opiekuna technicznego oraz dostęp do standardowego zestawu sprzętu.</p>
+     </div>
+-  </div>
+-  
+-  <!-- Contact -->
+-  <div class="w3-container" id="contact" style="margin-top:75px">
+-    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+-    <hr style="width:50px;border:5px solid red" class="w3-round">
+-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+-    <form action="/action_page.php" target="_blank">
+-      <div class="w3-section">
+-        <label>Name</label>
+-        <input class="w3-input w3-border" type="text" name="Name" required>
++    <div class="pricing-grid">
++      <div class="pricing-card">
++        <h3>Sesja foto</h3>
++        <div class="price">450 zł / 3 h</div>
++        <p>Każda kolejna godzina: 130 zł</p>
++        <ul>
++          <li>Cyklorama + 3 lampy LED / błysk</li>
++          <li>Strefa make-up &amp; garderoba</li>
++          <li>Dostęp do stanowiska retuszu</li>
++        </ul>
++        <a class="btn btn-outline" href="#kontakt">Zapytaj o termin</a>
+       </div>
+-      <div class="w3-section">
+-        <label>Email</label>
+-        <input class="w3-input w3-border" type="text" name="Email" required>
++      <div class="pricing-card highlight">
++        <h3>Produkcja live</h3>
++        <div class="price">1250 zł / 4 h</div>
++        <p>Każda kolejna godzina: 250 zł</p>
++        <ul>
++          <li>System kamer 3× 4K + operator</li>
++          <li>Mikser wideo &amp; audio + grafika live</li>
++          <li>Streaming do platform (YouTube, Teams, Zoom)</li>
++        </ul>
++        <a class="btn btn-primary" href="#kontakt">Zarezerwuj pakiet</a>
+       </div>
+-      <div class="w3-section">
+-        <label>Message</label>
+-        <input class="w3-input w3-border" type="text" name="Message" required>
++      <div class="pricing-card">
++        <h3>Podcast &amp; webinar</h3>
++        <div class="price">690 zł / 3 h</div>
++        <p>Każda kolejna godzina: 180 zł</p>
++        <ul>
++          <li>Studio audio z reżyserką</li>
++          <li>4 mikrofony + odsłuch</li>
++          <li>Montaż pilotażowego odcinka</li>
++        </ul>
++        <a class="btn btn-outline" href="#kontakt">Skonsultuj szczegóły</a>
+       </div>
+-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+-    </form>  
+-  </div>
+-
+-<!-- End page content -->
+-</div>
+-
+-<!-- W3.CSS Container -->
+-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+-
+-<script>
+-// Script to open and close sidebar
+-function w3_open() {
+-  document.getElementById("mySidebar").style.display = "block";
+-  document.getElementById("myOverlay").style.display = "block";
+-}
+- 
+-function w3_close() {
+-  document.getElementById("mySidebar").style.display = "none";
+-  document.getElementById("myOverlay").style.display = "none";
+-}
+-
+-// Modal Image Gallery
+-function onClick(element) {
+-  document.getElementById("img01").src = element.src;
+-  document.getElementById("modal01").style.display = "block";
+-  var captionText = document.getElementById("caption");
+-  captionText.innerHTML = element.alt;
+-}
+-</script>
++    </div>
++  </section>
+ 
+-</body>
+-</html>
++  <section class="section" id="kontakt">
++    <div class="section-header">
++      <h2>Skontaktuj się z nami</h2>
++      <p>Opowiedz o planowanej realizacji. Przygotujemy indywidualną wycenę i zaproponujemy dostępne terminy.</p>
++    </div>
++    <div class="contact">
++      <div class="contact-info">
++        <h3>Unique Work Studio</h3>
++        <p>ul. Kreatywna 12, Warszawa</p>
++        <ul>
++          <li><span></span><a href="tel:+48555111222">+48 555 111 222</a></li>
++          <li><span></span><a href="mailto:studio@uniquework.pl">studio@uniquework.pl</a></li>
++          <li><span></span>Dostępne 24/7 po wcześniejszej rezerwacji</li>
++        </ul>
++      </div>
++      <form action="#">
++        <div>
++          <label for="name">Imię i nazwisko</label>
++          <input id="name" type="text" name="name" placeholder="Twoje dane" required>
++        </div>
++        <div>
++          <label for="email">Adres e-mail</label>
++          <input id="email" type="email" name="email" placeholder="kontakt@firma.pl" required>
++        </div>
++        <div>
++          <label for="date">Preferowany termin</label>
++          <input id="date" type="text" name="date" placeholder="np. 14 czerwca, godz. 10:00">
++        </div>
++        <div>
++          <label for="message">Opis realizacji</label>
++          <textarea id="message" name="message" rows="4" placeholder="Napisz jaki format planujesz oraz ile osób weźmie udział"></textarea>
++        </div>
++        <button type="submit" class="btn btn-primary">Wyślij zapytanie</button>
++      </form>
++    </div>
++  </section>
+ 
++  <footer>
++    <div class="footer-links">
++      <a href="#oferta">Oferta</a>
++      <a href="#przestrzen">Przestrzeń</a>
++      <a href="#cennik">Cennik</a>
++      <a href="#kontakt">Kontakt</a>
++    </div>
++    <p>&copy; <span id="year"></span> Unique Work Studio. Wszystkie prawa zastrzeżone.</p>
++  </footer>
+ 
++  <script>
++    document.getElementById('year').textContent = new Date().getFullYear();
++  </script>
++</body>
++</html>
+ 
+EOF
+)
