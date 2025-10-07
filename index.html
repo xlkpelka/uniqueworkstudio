@@ -1,835 +1,1179 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/index.html b/index.html
-index 2b8dbeb6b7f72d50c43f5adaf79d5dbec82e5cd6..a9c7cac2a4fcda48a01ff464b76db8d256e99370 100644
---- a/index.html
-+++ b/index.html
-@@ -1,230 +1,616 @@
- <!DOCTYPE html>
--<html lang="en">
-+<html lang="pl">
- <head>
--<title>W3.CSS Template</title>
--<meta charset="UTF-8">
--<meta name="viewport" content="width=device-width, initial-scale=1">
--<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
--<style>
--body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
--body {font-size:16px;}
--.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
--.w3-half img:hover{opacity:1}
--</style>
-+  <meta charset="UTF-8">
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-+  <title>Unique Work Studio – Wynajem studia foto & wideo</title>
-+  <link rel="preconnect" href="https://fonts.googleapis.com">
-+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-+  <style>
-+    :root {
-+      --bg-dark: #0f1014;
-+      --bg-muted: #181b22;
-+      --accent: #ff3b3f;
-+      --text-light: #f6f6f8;
-+      --text-muted: #b8bcc6;
-+    }
-+
-+    * {
-+      box-sizing: border-box;
-+    }
-+
-+    body {
-+      margin: 0;
-+      font-family: 'Poppins', sans-serif;
-+      background: var(--bg-dark);
-+      color: var(--text-light);
-+      line-height: 1.6;
-+    }
-+
-+    img {
-+      max-width: 100%;
-+      display: block;
-+    }
-+
-+    a {
-+      color: inherit;
-+      text-decoration: none;
-+    }
-+
-+    header {
-+      min-height: 100vh;
-+      background: linear-gradient(160deg, rgba(15,16,20,0.9) 0%, rgba(15,16,20,0.6) 50%, rgba(15,16,20,0.4) 100%), url('hero.jpg') center/cover no-repeat;
-+      display: flex;
-+      flex-direction: column;
-+    }
-+
-+    .topbar {
-+      display: flex;
-+      align-items: center;
-+      justify-content: space-between;
-+      padding: 24px 5vw;
-+    }
-+
-+    .logo {
-+      display: flex;
-+      align-items: center;
-+      gap: 12px;
-+      font-weight: 600;
-+      letter-spacing: 0.08em;
-+      text-transform: uppercase;
-+    }
-+
-+    .logo img {
-+      width: 48px;
-+      height: 48px;
-+      border-radius: 12px;
-+      object-fit: cover;
-+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-+    }
-+
-+    nav ul {
-+      list-style: none;
-+      display: flex;
-+      gap: 28px;
-+      margin: 0;
-+      padding: 0;
-+      font-size: 0.95rem;
-+    }
-+
-+    nav a {
-+      position: relative;
-+      padding-bottom: 6px;
-+    }
-+
-+    nav a::after {
-+      content: '';
-+      position: absolute;
-+      left: 0;
-+      bottom: 0;
-+      width: 0;
-+      height: 2px;
-+      background: var(--accent);
-+      transition: width 0.3s ease;
-+    }
-+
-+    nav a:hover::after,
-+    nav a:focus-visible::after {
-+      width: 100%;
-+    }
-+
-+    .hero {
-+      flex: 1;
-+      display: grid;
-+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-+      gap: 48px;
-+      align-items: center;
-+      padding: 60px 5vw 80px;
-+    }
-+
-+    .hero h1 {
-+      font-size: clamp(2.6rem, 4vw, 4rem);
-+      margin-bottom: 16px;
-+      letter-spacing: 0.04em;
-+    }
-+
-+    .hero p {
-+      margin-bottom: 32px;
-+      color: var(--text-muted);
-+      max-width: 520px;
-+    }
-+
-+    .tagline {
-+      display: inline-flex;
-+      align-items: center;
-+      gap: 10px;
-+      padding: 10px 18px;
-+      border-radius: 999px;
-+      background: rgba(255, 59, 63, 0.12);
-+      color: var(--accent);
-+      font-weight: 500;
-+      margin-bottom: 20px;
-+    }
-+
-+    .buttons {
-+      display: flex;
-+      flex-wrap: wrap;
-+      gap: 16px;
-+    }
-+
-+    .btn {
-+      display: inline-flex;
-+      align-items: center;
-+      justify-content: center;
-+      padding: 14px 28px;
-+      border-radius: 32px;
-+      font-weight: 600;
-+      letter-spacing: 0.02em;
-+      transition: transform 0.2s ease, box-shadow 0.2s ease;
-+      cursor: pointer;
-+      border: none;
-+    }
-+
-+    .btn-primary {
-+      background: var(--accent);
-+      color: #fff;
-+      box-shadow: 0 12px 30px rgba(255, 59, 63, 0.4);
-+    }
-+
-+    .btn-outline {
-+      background: transparent;
-+      color: var(--text-light);
-+      border: 1px solid rgba(255,255,255,0.2);
-+    }
-+
-+    .btn:hover {
-+      transform: translateY(-2px);
-+      box-shadow: 0 16px 32px rgba(0,0,0,0.35);
-+    }
-+
-+    .hero-card {
-+      background: rgba(24, 27, 34, 0.7);
-+      border: 1px solid rgba(255, 255, 255, 0.06);
-+      border-radius: 32px;
-+      padding: 40px;
-+      backdrop-filter: blur(8px);
-+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-+    }
-+
-+    .hero-card h3 {
-+      margin-top: 0;
-+      font-size: 1.2rem;
-+      text-transform: uppercase;
-+      letter-spacing: 0.08em;
-+      color: var(--text-muted);
-+    }
-+
-+    .hero-card ul {
-+      list-style: none;
-+      padding: 0;
-+      margin: 24px 0 0;
-+      display: grid;
-+      gap: 16px;
-+    }
-+
-+    .hero-card li {
-+      display: flex;
-+      gap: 12px;
-+      align-items: flex-start;
-+    }
-+
-+    .hero-card li span {
-+      width: 10px;
-+      height: 10px;
-+      border-radius: 50%;
-+      background: var(--accent);
-+      margin-top: 7px;
-+      flex-shrink: 0;
-+    }
-+
-+    .section {
-+      padding: 100px 5vw;
-+    }
-+
-+    .section-header {
-+      max-width: 720px;
-+      margin-bottom: 60px;
-+    }
-+
-+    .section-header h2 {
-+      font-size: clamp(2rem, 3vw, 3rem);
-+      margin-bottom: 12px;
-+    }
-+
-+    .section-header p {
-+      color: var(--text-muted);
-+    }
-+
-+    .features {
-+      display: grid;
-+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+      gap: 32px;
-+    }
-+
-+    .feature {
-+      background: var(--bg-muted);
-+      border-radius: 24px;
-+      padding: 32px;
-+      border: 1px solid rgba(255,255,255,0.05);
-+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-+    }
-+
-+    .feature h3 {
-+      margin-top: 0;
-+      margin-bottom: 12px;
-+    }
-+
-+    .feature p {
-+      color: var(--text-muted);
-+      margin: 0;
-+    }
-+
-+    .gallery {
-+      display: grid;
-+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+      gap: 18px;
-+    }
-+
-+    .gallery img {
-+      height: 220px;
-+      object-fit: cover;
-+      border-radius: 20px;
-+      transition: transform 0.3s ease;
-+      border: 1px solid rgba(255,255,255,0.04);
-+    }
-+
-+    .gallery img:hover {
-+      transform: scale(1.03);
-+    }
-+
-+    .pricing-grid {
-+      display: grid;
-+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-+      gap: 36px;
-+    }
-+
-+    .pricing-card {
-+      background: var(--bg-muted);
-+      border-radius: 28px;
-+      padding: 36px;
-+      border: 1px solid rgba(255,255,255,0.08);
-+      position: relative;
-+      overflow: hidden;
-+      box-shadow: 0 24px 50px rgba(0,0,0,0.28);
-+    }
-+
-+    .pricing-card.highlight::before {
-+      content: 'Najczęściej wybierane';
-+      position: absolute;
-+      top: 24px;
-+      right: -60px;
-+      background: var(--accent);
-+      color: #fff;
-+      font-size: 0.75rem;
-+      letter-spacing: 0.1em;
-+      text-transform: uppercase;
-+      padding: 6px 72px;
-+      transform: rotate(45deg);
-+    }
-+
-+    .pricing-card h3 {
-+      margin: 0 0 12px;
-+    }
-+
-+    .price {
-+      font-size: 2.2rem;
-+      font-weight: 600;
-+      margin-bottom: 8px;
-+    }
-+
-+    .pricing-card ul {
-+      list-style: none;
-+      padding: 0;
-+      margin: 24px 0 32px;
-+      display: grid;
-+      gap: 12px;
-+      color: var(--text-muted);
-+    }
-+
-+    .pricing-card ul li::before {
-+      content: '\2713';
-+      color: var(--accent);
-+      margin-right: 10px;
-+    }
-+
-+    .contact {
-+      display: grid;
-+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-+      gap: 48px;
-+      background: linear-gradient(135deg, rgba(24,27,34,0.95), rgba(24,27,34,0.75));
-+      border-radius: 36px;
-+      padding: 48px;
-+      border: 1px solid rgba(255,255,255,0.05);
-+      box-shadow: 0 26px 46px rgba(0,0,0,0.3);
-+    }
-+
-+    .contact-info ul {
-+      list-style: none;
-+      padding: 0;
-+      margin: 32px 0 0;
-+      display: grid;
-+      gap: 16px;
-+    }
-+
-+    .contact-info li {
-+      display: flex;
-+      gap: 14px;
-+      align-items: center;
-+      color: var(--text-muted);
-+    }
-+
-+    .contact-info li span {
-+      width: 12px;
-+      height: 12px;
-+      border-radius: 50%;
-+      background: var(--accent);
-+      flex-shrink: 0;
-+    }
-+
-+    form {
-+      display: grid;
-+      gap: 16px;
-+    }
-+
-+    label {
-+      font-weight: 500;
-+    }
-+
-+    input, textarea {
-+      width: 100%;
-+      padding: 14px 18px;
-+      border-radius: 16px;
-+      border: 1px solid rgba(255,255,255,0.08);
-+      background: rgba(15,16,20,0.6);
-+      color: var(--text-light);
-+      font-family: inherit;
-+      font-size: 1rem;
-+      resize: vertical;
-+    }
-+
-+    input:focus, textarea:focus {
-+      outline: 2px solid rgba(255,59,63,0.4);
-+    }
-+
-+    footer {
-+      padding: 36px 5vw 48px;
-+      background: #090a0d;
-+      text-align: center;
-+      color: var(--text-muted);
-+      font-size: 0.9rem;
-+    }
-+
-+    .footer-links {
-+      display: flex;
-+      justify-content: center;
-+      gap: 24px;
-+      margin-bottom: 12px;
-+    }
-+
-+    @media (max-width: 960px) {
-+      nav ul {
-+        gap: 18px;
-+        font-size: 0.85rem;
-+      }
-+    }
-+
-+    @media (max-width: 768px) {
-+      header {
-+        min-height: auto;
-+      }
-+
-+      .topbar {
-+        flex-direction: column;
-+        gap: 18px;
-+        text-align: center;
-+      }
-+
-+      nav ul {
-+        flex-wrap: wrap;
-+        justify-content: center;
-+      }
-+
-+      .hero-card {
-+        padding: 32px;
-+      }
-+    }
-+
-+    @media (max-width: 520px) {
-+      .section {
-+        padding: 72px 7vw;
-+      }
-+
-+      .contact {
-+        padding: 36px 28px;
-+      }
-+
-+      .pricing-card.highlight::before {
-+        display: none;
-+      }
-+    }
-+  </style>
- </head>
- <body>
--
--<!-- Sidebar/menu -->
--<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
--  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
--  <div class="w3-container">
--    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
--  </div>
--  <div class="w3-bar-block">
--    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">O NAS</a> 
--    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">ZDJĘCIA</a> 
--    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CO ROBIMY</a> 
--    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
--    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CENNIK</a> 
--    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">KONTAKT</a>
--  </div>
--</nav>
--
--<!-- Top menu on small screens -->
--<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
--  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
--  <span>Company Name</span>
--</header>
--
--<!-- Overlay effect when opening sidebar on small screens -->
--<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
--
--<!-- !PAGE CONTENT! -->
--<div class="w3-main" style="margin-left:340px;margin-right:40px">
--
--  <!-- Header -->
--  <div class="w3-container" style="margin-top:80px" id="showcase">
--    <h1 class="w3-jumbo"><b>Unique Work STUDIO</b></h1>
--    <h1 class="w3-xxxlarge w3-text-red"><b>NAGRANIA.EMISJE.POSTPRODUKCJA.</b></h1>
--    <hr style="width:50px;border:5px solid red" class="w3-round">
--  </div>
--  
--  <!-- Photo grid (modal) -->
--  <div class="w3-row-padding">
--    <div class="w3-half">
--      <img src="/gal3.jpg" style="width:100%" onclick="onClick(this)" alt="studio vip room">
--      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="studio nagrań,greenscreen">
--      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="cyklorama,kamery 4K">
-+  <header id="start">
-+    <div class="topbar">
-+      <div class="logo">
-+        <img src="logo.png" alt="Logo Unique Work Studio">
-+        <span>Unique Work Studio</span>
-+      </div>
-+      <nav>
-+        <ul>
-+          <li><a href="#start">Start</a></li>
-+          <li><a href="#oferta">Oferta</a></li>
-+          <li><a href="#przestrzen">Przestrzeń</a></li>
-+          <li><a href="#cennik">Cennik</a></li>
-+          <li><a href="#kontakt">Kontakt</a></li>
-+        </ul>
-+      </nav>
-     </div>
++946
+-211
+
+<!DOCTYPE html>
+<html lang="en">
+<html lang="pl">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unique Work Studio — Wynajem studia kreatywnego w Warszawie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #090a0f;
+      --bg-soft: #12141d;
+      --bg-section: #141720;
+      --accent: #f5af19;
+      --accent-soft: rgba(245, 175, 25, 0.08);
+      --text: #f1f2f6;
+      --text-muted: #b5b8c9;
+      --border: rgba(255, 255, 255, 0.08);
+      --max-width: 1180px;
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-main);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 48px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(245,175,25,0.25), transparent 45%),
+        linear-gradient(160deg, rgba(9,10,15,0.92) 0%, rgba(9,10,15,0.75) 55%, rgba(9,10,15,0.9) 100%),
+        url('hero.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      isolation: isolate;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,10,15,0.25) 0%, rgba(9,10,15,0.75) 65%, rgba(9,10,15,0.95) 100%);
+      z-index: 0;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(9,10,15,0.8);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo img {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      margin: 0;
+      padding: 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
+
+    nav a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(9,10,15,0.6);
+      color: var(--text);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-toggle span,
+    .nav-toggle::before,
+    .nav-toggle::after {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      display: block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-toggle span {
+      margin: 6px 0;
+    }
+
+    .nav-toggle::before {
+      position: absolute;
+      transform: translateY(-6px);
+    }
+
+    .nav-toggle::after {
+      position: absolute;
+      transform: translateY(6px);
+    }
+
+    .nav-toggle.active span {
+      opacity: 0;
+    }
+
+    .nav-toggle.active::before {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .nav-toggle.active::after {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      align-items: center;
+      padding: 120px 0 140px;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      grid-column: span 6;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4vw, 4.6rem);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 520px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1a1a1a;
+      box-shadow: 0 15px 35px rgba(245, 175, 25, 0.35);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      background: rgba(18,20,29,0.6);
+      color: var(--text);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .hero-highlight {
+      grid-column: span 6;
+      background: rgba(18,20,29,0.85);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      display: grid;
+      gap: 28px;
+      box-shadow: 0 40px 60px rgba(0,0,0,0.35);
+    }
+
+    .hero-highlight h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-highlight p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .fact {
+      background: rgba(9,10,15,0.7);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .fact strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    section {
+      padding: 120px 0;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--bg-section);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    .section-lead {
+      max-width: 520px;
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: linear-gradient(160deg, rgba(18,20,29,0.95) 0%, rgba(12,13,18,0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .feature-card h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-grid img:nth-child(1) {
+      grid-column: span 7;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .gallery-grid img:nth-child(2) {
+      grid-column: span 5;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .gallery-grid img:nth-child(3),
+    .gallery-grid img:nth-child(4) {
+      grid-column: span 3;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .pricing-card {
+      background: linear-gradient(160deg, rgba(18,20,29,0.95) 0%, rgba(12,13,18,0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 32px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.highlight {
+      border-color: rgba(245,175,25,0.5);
+      box-shadow: 0 30px 40px rgba(245,175,25,0.15);
+    }
+
+    .pricing-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(245,175,25,0.12), transparent 55%);
+      z-index: 0;
+    }
+
+    .pricing-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--accent);
+    }
+
+    .pricing-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--text-muted);
+    }
+
+    .pricing-card ul li::before {
+      content: '•';
+      color: var(--accent);
+      margin-right: 10px;
+    }
+
+    .amenities-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .amenity {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .amenity strong {
+      color: var(--text);
+      display: block;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .testimonial {
+      background: rgba(18,20,29,0.9);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .testimonial p {
+      margin: 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .testimonial span {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(245,175,25,0.08), rgba(12,13,18,0.9));
+      border: 1px solid rgba(245,175,25,0.2);
+      border-radius: 30px;
+      padding: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+
+    .cta-section h2 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 3.2rem);
+    }
+
+    .cta-section p {
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .contact-card {
+      background: rgba(18,20,29,0.92);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 32px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(9,10,15,0.65);
+      color: var(--text);
+      font: inherit;
+      resize: vertical;
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: rgba(9,10,15,0.95);
+      padding: 32px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-inner nav {
+      display: flex;
+      gap: 18px;
+    }
+
+    @media (max-width: 980px) {
+      nav ul {
+        position: fixed;
+        inset: 80px 24px auto;
+        background: rgba(9,10,15,0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 28px;
+        flex-direction: column;
+        gap: 20px;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      nav ul.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+      }
+
+      .hero-copy,
+      .hero-highlight {
+        grid-column: span 12;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid img:nth-child(1),
+      .gallery-grid img:nth-child(2),
+      .gallery-grid img:nth-child(3),
+      .gallery-grid img:nth-child(4) {
+        grid-column: span 1;
+        height: 220px;
+      }
+
+      .cta-section {
+        padding: 48px 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 32px, var(--max-width));
+      }
+
+      .hero {
+        padding: 80px 0 100px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .cta-section {
+        padding: 38px 26px;
+      }
+
+      footer {
+        text-align: center;
+      }
+
+      .footer-inner {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">O NAS</a> 
+    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">ZDJĘCIA</a> 
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CO ROBIMY</a> 
+    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
+    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CENNIK</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">KONTAKT</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Company Name</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>Unique Work STUDIO</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>NAGRANIA.EMISJE.POSTPRODUKCJA.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="/gal3.jpg" style="width:100%" onclick="onClick(this)" alt="studio vip room">
+      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="studio nagrań,greenscreen">
+      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="cyklorama,kamery 4K">
+  <header id="start">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="logo">
+          <img src="logo.png" alt="Unique Work Studio logo">
+          Unique Work Studio
+        </div>
+        <nav aria-label="Główne">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span></span>
+          </button>
+          <ul id="primary-navigation">
+            <li><a href="#oferta">Oferta</a></li>
+            <li><a href="#przestrzen">Przestrzeń</a></li>
+            <li><a href="#cennik">Cennik</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+        <a class="cta-phone" href="tel:+48555111222">Zarezerwuj: +48 555 111 222</a>
+      </div>
+    </div>
+
+    <div class="w3-half">
+      <img src="/gal4.jpg" style="width:100%" onclick="onClick(this)" alt="Windows for the atrium">
+      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="Bedroom and office in one space">
+      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="Scandinavian design">
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Services.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>We are a interior design service that focus on what's best for your home and what's best for you!</p>
+    <p>Some text about our services - what we do and what we offer. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </div>
+  
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>The best team in the world.</p>
+    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p><b>Our designers are thoughtfully chosen</b>:</p>
+  </div>
+
+  <!-- The Team -->
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+        <div class="w3-container">
+          <h3>John Doe</h3>
+          <p class="w3-opacity">CEO & Founder</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+    <div class="container hero">
+      <div class="hero-copy">
+        <span class="hero-tag">studio foto & wideo</span>
+        <h1>Miejsce, w którym Twoje pomysły nabierają światła</h1>
+        <p>Nowoczesne studio kreatywne w centrum Warszawy. Elastyczna, w pełni wyposażona przestrzeń z naturalnym światłem, cykloramą 6 m i profesjonalnym zapleczem produkcyjnym — gotowa na sesje zdjęciowe, nagrania i eventy.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cennik">Sprawdź dostępne pakiety</a>
+          <a class="btn btn-secondary" href="#kontakt">Zapytaj o termin</a>
+        </div>
+      </div>
+      <aside class="hero-highlight" aria-label="Najważniejsze atuty studia">
+        <h3>Dlaczego Unique Work Studio?</h3>
+        <p>Łączymy kreatywny klimat loftu z komfortem nowoczesnego zaplecza. Wspieramy Twój zespół w każdej produkcji.</p>
+        <div class="hero-facts">
+          <div class="fact">
+            <strong>180 m²</strong>
+            Elastycznej przestrzeni
+          </div>
+          <div class="fact">
+            <strong>6 m</strong>
+            Biała cyklorama z systemem LED
+          </div>
+          <div class="fact">
+            <strong>2 h</strong>
+            Minimalny czas rezerwacji
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+        <div class="w3-container">
+          <h3>Jane Doe</h3>
+          <p class="w3-opacity">Designer</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+  </header>
+
+  <main>
+    <section id="oferta">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Stworzone dla kreatywnej produkcji</h2>
+          <p class="section-lead">Wyróżnia nas dbałość o detale i wsparcie zespołów foto-wideo na każdym etapie pracy. Oferujemy nie tylko przestrzeń, ale i kompleksowe zaplecze z zespołem asystentów na miejscu.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon">01</div>
+            <h3>Naturalne światło i kontrola</h3>
+            <p>Panoramiczne okna wychodzące na północ, black-out, system sterowania światłem oraz zestaw softboxów Profoto.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">02</div>
+            <h3>Strefy pracy zespołu</h3>
+            <p>Stylowa strefa lounge, stanowiska make-up i stylizacji, kuchnia z barem oraz garderoba z parownicą i prasowalnicą.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">03</div>
+            <h3>Wsparcie produkcyjne</h3>
+            <p>Na miejscu asystenci światła, możliwość wynajmu dodatkowego sprzętu foto-wideo i transportu scenografii.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">04</div>
+            <h3>Dedykowana obsługa</h3>
+            <p>Pomagamy w organizacji cateringu, castingów, backstage, a także rekomendujemy sprawdzonych specjalistów.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
+        <div class="w3-container">
+          <h3>Mike Ross</h3>
+          <p class="w3-opacity">Architect</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+    </section>
+
+    <section id="przestrzen">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Poznaj nasze studio</h2>
+          <p class="section-lead">Loftowe wnętrza, wysoki strop i przestrzeń podzielona na moduły pozwalają szybko aranżować plan zdjęciowy. Każdy pakiet obejmuje dostęp do całego studia.</p>
+        </div>
+
+        <div class="gallery-grid" role="list">
+          <img src="gal1.jpg" alt="Przestrzeń zdjęciowa Unique Work Studio" role="listitem">
+          <img src="gal2.jpg" alt="Strefa lounge i kuchnia w studio" role="listitem">
+          <img src="gal3.jpg" alt="Stanowisko make-up" role="listitem">
+          <img src="gal4.jpg" alt="Szczegóły wyposażenia studia" role="listitem">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages / Pricing Tables -->
+  <div class="w3-container" id="packages" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Packages.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+        <li class="w3-padding-16">2 kamery</li>
+        <li class="w3-padding-16"></li>
+        <li class="w3-padding-16"></li>
+        <li class="w3-padding-16">20% furniture discount</li>
+        <li class="w3-padding-16">Good deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 199</h2>
+          <span class="w3-opacity">per room</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+        
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
+        <li class="w3-padding-16">Floorplanning</li>
+        <li class="w3-padding-16">50 hours support</li>
+        <li class="w3-padding-16">Photography</li>
+        <li class="w3-padding-16">50% furniture discount</li>
+        <li class="w3-padding-16">GREAT deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 249</h2>
+          <span class="w3-opacity">per room</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">W cenie wynajmu otrzymujesz</h2>
+          <p class="section-lead">Dbamy, by każda sesja przebiegała komfortowo. Nasi gospodarze przygotowują plan przed Twoim przyjazdem i pozostają do dyspozycji na miejscu.</p>
+        </div>
+
+        <div class="amenities-list">
+          <div class="amenity"><strong>Sprzęt oświetleniowy</strong>4x Profoto D2, 6x Aputure, zestaw modyfikatorów, boom oraz statywy Avenger.</div>
+          <div class="amenity"><strong>Tła i cyklorama</strong>Biała cyklorama 6×5 m, system teł bezszwowych w wybranych kolorach, green screen na życzenie.</div>
+          <div class="amenity"><strong>Strefa make-up</strong>2 stanowiska z lustrami hollywood, regulowanymi fotelami i profesjonalnym oświetleniem.</div>
+          <div class="amenity"><strong>Zaplecze</strong>Kuchnia z ekspresem, woda i napoje, garderoba z lustrem 360°, prysznic oraz przestrzeń do przechowywania.</div>
+          <div class="amenity"><strong>Audio & wideo</strong>Monitor referencyjny 4K, system nagłośnienia Sonos, szybkie Wi-Fi 1 Gb/s.</div>
+          <div class="amenity"><strong>Parking i logistyka</strong>2 miejsca parkingowe, bezpośredni dojazd do windy towarowej, pomoc w rozładunku sprzętu.</div>
+        </div>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+    </section>
+
+    <section id="cennik">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Transparentny cennik</h2>
+          <p class="section-lead">Wybierz pakiet, który najlepiej odpowiada Twojej produkcji. W cenę wliczamy wsparcie gospodarza studia oraz dostęp do całego wyposażenia podstawowego.</p>
+        </div>
+
+        <div class="pricing-cards">
+          <article class="pricing-card">
+            <h3>Mini sesja</h3>
+            <p class="price">590 zł</p>
+            <p>2 godziny wynajmu (dni robocze)</p>
+            <ul>
+              <li>Dostęp do cykloramy i strefy dziennej</li>
+              <li>Gospodarz studia w trakcie sesji</li>
+              <li>Ekspresowy catering kawowy</li>
+            </ul>
+            <a class="btn btn-secondary" href="#kontakt">Zarezerwuj termin</a>
+          </article>
+
+          <article class="pricing-card highlight">
+            <h3>Pół dnia</h3>
+            <p class="price">1 390 zł</p>
+            <p>5 godzin wynajmu</p>
+            <ul>
+              <li>Pełen dostęp do wszystkich stref</li>
+              <li>Asystent światła na miejscu</li>
+              <li>Catering premium dla zespołu</li>
+            </ul>
+            <a class="btn btn-primary" href="mailto:hello@uniqueworkstudio.pl">Zapytaj o dostępność</a>
+          </article>
+
+          <article class="pricing-card">
+            <h3>Cały dzień</h3>
+            <p class="price">2 590 zł</p>
+            <p>10 godzin wynajmu</p>
+            <ul>
+              <li>Dedicated manager i concierge</li>
+              <li>Możliwość nocnego montażu planu</li>
+              <li>Opcja wynajmu dodatkowego sprzętu</li>
+            </ul>
+            <a class="btn btn-secondary" href="#kontakt">Skontaktuj się</a>
+          </article>
+        </div>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Opinie naszych klientów</h2>
+          <p class="section-lead">Marki modowe, agencje kreatywne oraz fotografowie niezależni wracają do nas regularnie. Doceniają klimat przestrzeni i wsparcie zespołu.</p>
+        </div>
+
+        <div class="testimonials">
+          <article class="testimonial">
+            <p>„Studio ma idealne warunki do sesji lookbookowych. Naturalne światło + możliwość pełnego zaciemnienia daje ogromne możliwości. Obsługa naprawdę słucha potrzeb ekipy.”</p>
+            <span>Anna — Head of Production, Bold Agency</span>
+          </article>
+          <article class="testimonial">
+            <p>„Wynajmujemy Unique Work Studio przy większości nagrań kampanii wideo. Profesjonalny sprzęt, szybka logistyka i świetna atmosfera — polecam wszystkim producentom.”</p>
+            <span>Michał — Producent, FrameHouse</span>
+          </article>
+          <article class="testimonial">
+            <p>„Doceniamy dopracowaną przestrzeń backstage oraz możliwość zamówienia całej obsługi na miejscu. To oszczędza nam czas i zapewnia spójność produkcji.”</p>
+            <span>Kinga — Stylistka, Freelance</span>
+          </article>
+        </div>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
  
--    <div class="w3-half">
--      <img src="/gal4.jpg" style="width:100%" onclick="onClick(this)" alt="Windows for the atrium">
--      <img src="/gal1.jpg" style="width:100%" onclick="onClick(this)" alt="Bedroom and office in one space">
--      <img src="/gal2.jpg" style="width:100%" onclick="onClick(this)" alt="Scandinavian design">
--    </div>
--  </div>
--
--  <!-- Modal for full size images on click-->
--  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
--    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
--    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
--      <img id="img01" class="w3-image">
--      <p id="caption"></p>
--    </div>
--  </div>
--
--  <!-- Services -->
--  <div class="w3-container" id="services" style="margin-top:75px">
--    <h1 class="w3-xxxlarge w3-text-red"><b>Services.</b></h1>
--    <hr style="width:50px;border:5px solid red" class="w3-round">
--    <p>We are a interior design service that focus on what's best for your home and what's best for you!</p>
--    <p>Some text about our services - what we do and what we offer. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
--    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
--    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
--    </p>
--  </div>
--  
--  <!-- Designers -->
--  <div class="w3-container" id="designers" style="margin-top:75px">
--    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
--    <hr style="width:50px;border:5px solid red" class="w3-round">
--    <p>The best team in the world.</p>
--    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
--    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
--    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
--    </p>
--    <p><b>Our designers are thoughtfully chosen</b>:</p>
--  </div>
--
--  <!-- The Team -->
--  <div class="w3-row-padding w3-grayscale">
--    <div class="w3-col m4 w3-margin-bottom">
--      <div class="w3-light-grey">
--        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
--        <div class="w3-container">
--          <h3>John Doe</h3>
--          <p class="w3-opacity">CEO & Founder</p>
--          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-+    <div class="hero">
-+      <div>
-+        <div class="tagline">Studio foto & wideo w centrum miasta</div>
-+        <h1>Wielofunkcyjna przestrzeń do nagrań, transmisji i eventów online</h1>
-+        <p>
-+          Unique Work Studio to gotowe do pracy studio nagraniowe z greenscreenem, cykloramą oraz zapleczem technicznym. Idealne dla ekip foto/video, webinarów na żywo, podcastów oraz produkcji hybrydowych.
-+        </p>
-+        <div class="buttons">
-+          <a class="btn btn-primary" href="#kontakt">Zarezerwuj termin</a>
-+          <a class="btn btn-outline" href="#przestrzen">Poznaj przestrzeń</a>
-         </div>
-       </div>
--    </div>
--    <div class="w3-col m4 w3-margin-bottom">
--      <div class="w3-light-grey">
--        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
--        <div class="w3-container">
--          <h3>Jane Doe</h3>
--          <p class="w3-opacity">Designer</p>
--          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
--        </div>
-+      <div class="hero-card">
-+        <h3>Dlaczego warto?</h3>
-+        <ul>
-+          <li><span></span><strong>Cyklorama 6×4 m</strong> z przygotowanym systemem oświetlenia LED.</li>
-+          <li><span></span><strong>Strefa VIP &amp; make-up</strong> dla komfortu gości i prowadzących.</li>
-+          <li><span></span><strong>Streaming 4K</strong> z obsługą realizatora oraz sprzętem audio.</li>
-+          <li><span></span><strong>Elastyczne godziny</strong> i wsparcie zespołu technicznego na miejscu.</li>
-+        </ul>
-       </div>
-     </div>
--    <div class="w3-col m4 w3-margin-bottom">
--      <div class="w3-light-grey">
--        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
--        <div class="w3-container">
--          <h3>Mike Ross</h3>
--          <p class="w3-opacity">Architect</p>
--          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
--        </div>
-+  </header>
-+
-+  <section class="section" id="oferta">
-+    <div class="section-header">
-+      <h2>Oferta szyta na miarę Twojej produkcji</h2>
-+      <p>Od kameralnych nagrań po realizacje live. Zapewniamy profesjonalne zaplecze sprzętowe, scenografię oraz doświadczony zespół realizatorów.</p>
-+    </div>
-+    <div class="features">
-+      <div class="feature">
-+        <h3>Studio foto &amp; video</h3>
-+        <p>Przestrzeń o wysokości 4,5 m z cykloramą, greenscreenem i kontrolą światła. Idealne warunki do sesji produktowych, reklamowych i korporacyjnych.</p>
-+      </div>
-+      <div class="feature">
-+        <h3>Produkcje live</h3>
-+        <p>W pełni wyposażone stanowisko realizatora, miksery wideo i audio, system kamer 4K oraz stabilne łącze światłowodowe do streamingu.</p>
-+      </div>
-+      <div class="feature">
-+        <h3>Podcasty &amp; webinary</h3>
-+        <p>Wygłuszona strefa audio, mikrofony pojemnościowe, odsłuch na słuchawkach i tła scenograficzne, które można szybko dopasować do marki.</p>
-+      </div>
-+      <div class="feature">
-+        <h3>Obsługa kreatywna</h3>
-+        <p>Konsultacje produkcyjne, wsparcie scenariuszowe, montaż i postprodukcja. Pomagamy przejść przez cały proces – od pomysłu po publikację.</p>
-       </div>
-     </div>
--  </div>
--
--  <!-- Packages / Pricing Tables -->
--  <div class="w3-container" id="packages" style="margin-top:75px">
--    <h1 class="w3-xxxlarge w3-text-red"><b>Packages.</b></h1>
--    <hr style="width:50px;border:5px solid red" class="w3-round">
--    <p>
--
--  <div class="w3-row-padding">
--    <div class="w3-half w3-margin-bottom">
--      <ul class="w3-ul w3-light-grey w3-center">
--        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
--        <li class="w3-padding-16">2 kamery</li>
--        <li class="w3-padding-16"></li>
--        <li class="w3-padding-16"></li>
--        <li class="w3-padding-16">20% furniture discount</li>
--        <li class="w3-padding-16">Good deals</li>
--        <li class="w3-padding-16">
--          <h2>$ 199</h2>
--          <span class="w3-opacity">per room</span>
--        </li>
--        <li class="w3-light-grey w3-padding-24">
--          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
--        </li>
--      </ul>
-+  </section>
-+
-+  <section class="section" id="przestrzen">
-+    <div class="section-header">
-+      <h2>Przestrzeń, która inspiruje</h2>
-+      <p>Przemyślany układ studia zapewnia płynny przepływ pracy: od przygotowania gości, przez plan zdjęciowy, aż po komfortowy backstage.</p>
-+    </div>
-+    <div class="gallery">
-+      <img src="gal1.jpg" alt="Plan zdjęciowy z cykloramą i systemem oświetlenia">
-+      <img src="gal2.jpg" alt="Strefa nagrań wideo z greenscreenem">
-+      <img src="gal3.jpg" alt="Salon VIP oraz przestrzeń networkingowa">
-+      <img src="gal4.jpg" alt="Profesjonalne stanowisko realizatora transmisji">
-     </div>
--        
--    <div class="w3-half">
--      <ul class="w3-ul w3-light-grey w3-center">
--        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
--        <li class="w3-padding-16">Floorplanning</li>
--        <li class="w3-padding-16">50 hours support</li>
--        <li class="w3-padding-16">Photography</li>
--        <li class="w3-padding-16">50% furniture discount</li>
--        <li class="w3-padding-16">GREAT deals</li>
--        <li class="w3-padding-16">
--          <h2>$ 249</h2>
--          <span class="w3-opacity">per room</span>
--        </li>
--        <li class="w3-light-grey w3-padding-24">
--          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
--        </li>
--      </ul>
-+  </section>
-+
-+  <section class="section" id="cennik">
-+    <div class="section-header">
-+      <h2>Elastyczny cennik wynajmu</h2>
-+      <p>Wybierz pakiet dopasowany do Twojego projektu. Ceny obejmują wsparcie opiekuna technicznego oraz dostęp do standardowego zestawu sprzętu.</p>
-     </div>
--  </div>
--  
--  <!-- Contact -->
--  <div class="w3-container" id="contact" style="margin-top:75px">
--    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
--    <hr style="width:50px;border:5px solid red" class="w3-round">
--    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
--    <form action="/action_page.php" target="_blank">
--      <div class="w3-section">
--        <label>Name</label>
--        <input class="w3-input w3-border" type="text" name="Name" required>
-+    <div class="pricing-grid">
-+      <div class="pricing-card">
-+        <h3>Sesja foto</h3>
-+        <div class="price">450 zł / 3 h</div>
-+        <p>Każda kolejna godzina: 130 zł</p>
-+        <ul>
-+          <li>Cyklorama + 3 lampy LED / błysk</li>
-+          <li>Strefa make-up &amp; garderoba</li>
-+          <li>Dostęp do stanowiska retuszu</li>
-+        </ul>
-+        <a class="btn btn-outline" href="#kontakt">Zapytaj o termin</a>
-       </div>
--      <div class="w3-section">
--        <label>Email</label>
--        <input class="w3-input w3-border" type="text" name="Email" required>
-+      <div class="pricing-card highlight">
-+        <h3>Produkcja live</h3>
-+        <div class="price">1250 zł / 4 h</div>
-+        <p>Każda kolejna godzina: 250 zł</p>
-+        <ul>
-+          <li>System kamer 3× 4K + operator</li>
-+          <li>Mikser wideo &amp; audio + grafika live</li>
-+          <li>Streaming do platform (YouTube, Teams, Zoom)</li>
-+        </ul>
-+        <a class="btn btn-primary" href="#kontakt">Zarezerwuj pakiet</a>
-       </div>
--      <div class="w3-section">
--        <label>Message</label>
--        <input class="w3-input w3-border" type="text" name="Message" required>
-+      <div class="pricing-card">
-+        <h3>Podcast &amp; webinar</h3>
-+        <div class="price">690 zł / 3 h</div>
-+        <p>Każda kolejna godzina: 180 zł</p>
-+        <ul>
-+          <li>Studio audio z reżyserką</li>
-+          <li>4 mikrofony + odsłuch</li>
-+          <li>Montaż pilotażowego odcinka</li>
-+        </ul>
-+        <a class="btn btn-outline" href="#kontakt">Skonsultuj szczegóły</a>
-       </div>
--      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
--    </form>  
--  </div>
--
--<!-- End page content -->
--</div>
--
--<!-- W3.CSS Container -->
--<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
--
--<script>
--// Script to open and close sidebar
--function w3_open() {
--  document.getElementById("mySidebar").style.display = "block";
--  document.getElementById("myOverlay").style.display = "block";
--}
-- 
--function w3_close() {
--  document.getElementById("mySidebar").style.display = "none";
--  document.getElementById("myOverlay").style.display = "none";
--}
--
--// Modal Image Gallery
--function onClick(element) {
--  document.getElementById("img01").src = element.src;
--  document.getElementById("modal01").style.display = "block";
--  var captionText = document.getElementById("caption");
--  captionText.innerHTML = element.alt;
--}
--</script>
-+    </div>
-+  </section>
- 
--</body>
--</html>
-+  <section class="section" id="kontakt">
-+    <div class="section-header">
-+      <h2>Skontaktuj się z nami</h2>
-+      <p>Opowiedz o planowanej realizacji. Przygotujemy indywidualną wycenę i zaproponujemy dostępne terminy.</p>
-+    </div>
-+    <div class="contact">
-+      <div class="contact-info">
-+        <h3>Unique Work Studio</h3>
-+        <p>ul. Kreatywna 12, Warszawa</p>
-+        <ul>
-+          <li><span></span><a href="tel:+48555111222">+48 555 111 222</a></li>
-+          <li><span></span><a href="mailto:studio@uniquework.pl">studio@uniquework.pl</a></li>
-+          <li><span></span>Dostępne 24/7 po wcześniejszej rezerwacji</li>
-+        </ul>
-+      </div>
-+      <form action="#">
-+        <div>
-+          <label for="name">Imię i nazwisko</label>
-+          <input id="name" type="text" name="name" placeholder="Twoje dane" required>
-+        </div>
-+        <div>
-+          <label for="email">Adres e-mail</label>
-+          <input id="email" type="email" name="email" placeholder="kontakt@firma.pl" required>
-+        </div>
-+        <div>
-+          <label for="date">Preferowany termin</label>
-+          <input id="date" type="text" name="date" placeholder="np. 14 czerwca, godz. 10:00">
-+        </div>
-+        <div>
-+          <label for="message">Opis realizacji</label>
-+          <textarea id="message" name="message" rows="4" placeholder="Napisz jaki format planujesz oraz ile osób weźmie udział"></textarea>
-+        </div>
-+        <button type="submit" class="btn btn-primary">Wyślij zapytanie</button>
-+      </form>
-+    </div>
-+  </section>
- 
-+  <footer>
-+    <div class="footer-links">
-+      <a href="#oferta">Oferta</a>
-+      <a href="#przestrzen">Przestrzeń</a>
-+      <a href="#cennik">Cennik</a>
-+      <a href="#kontakt">Kontakt</a>
-+    </div>
-+    <p>&copy; <span id="year"></span> Unique Work Studio. Wszystkie prawa zastrzeżone.</p>
-+  </footer>
- 
-+  <script>
-+    document.getElementById('year').textContent = new Date().getFullYear();
-+  </script>
-+</body>
-+</html>
- 
-EOF
-)
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+    </section>
+
+</body>
+</html>
+    <section>
+      <div class="container">
+        <div class="cta-section">
+          <div>
+            <h2>Gotowi na Twoją produkcję</h2>
+            <p>Skontaktuj się, opowiedz o projekcie i zarezerwuj dogodny termin. Odpowiemy w ciągu kilku godzin i pomożemy przygotować plan.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+48555111222">Zadzwoń teraz</a>
+            <a class="btn btn-secondary" href="mailto:hello@uniqueworkstudio.pl">hello@uniqueworkstudio.pl</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <h3>Odwiedź nas</h3>
+          <p>Ul. Fabryczna 12/4A<br>00-123 Warszawa</p>
+          <p>Godziny otwarcia: 8:00–22:00 (7 dni w tygodniu)</p>
+          <a href="https://maps.google.com" target="_blank" rel="noopener">Zobacz na mapie</a>
+        </div>
+        <div class="contact-card">
+          <h3>Dane kontaktowe</h3>
+          <p><strong>Rezerwacje:</strong> <a href="tel:+48555111222">+48 555 111 222</a></p>
+          <p><strong>Produkcja:</strong> <a href="tel:+48555111444">+48 555 111 444</a></p>
+          <p><strong>Email:</strong> <a href="mailto:hello@uniqueworkstudio.pl">hello@uniqueworkstudio.pl</a></p>
+        </div>
+        <div class="contact-card">
+          <h3>Wyślij zapytanie</h3>
+          <form class="contact-form">
+            <label>Imię i nazwisko
+              <input type="text" name="name" placeholder="Twoje imię">
+            </label>
+            <label>Adres e-mail
+              <input type="email" name="email" placeholder="nazwa@firma.pl">
+            </label>
+            <label>Krótki opis projektu
+              <textarea name="message" placeholder="Termin, charakter sesji, potrzeby sprzętowe..."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Wyślij wiadomość</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2024 Unique Work Studio. Wszystkie prawa zastrzeżone.</span>
+      <nav aria-label="Linki w stopce">
+        <a href="#start">Start</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navList = document.getElementById('primary-navigation');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = navList.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.classList.toggle('active', isOpen);
+    });
+
+    navList.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
